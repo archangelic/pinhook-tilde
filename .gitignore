@@ -1,0 +1,4 @@
+venv/
+json/
+users/
+__pycache__/
