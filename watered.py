@@ -5,10 +5,11 @@ def run(nick):
     try:
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)
-         
+        
         last_watered = datetime.utcfromtimestamp(plant['last_watered'])
         water_diff = datetime.now() - last_watered
-        if plant['is_dead']:
+
+        if plant['is_dead'] or water_diff.days >= 5:
             return '{}: Your plant is dead'.format(nick)
         elif water_diff.days == 0:
             hours = str(round(water_diff.seconds / 3600))
