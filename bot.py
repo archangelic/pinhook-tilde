@@ -11,6 +11,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, server, port=6667):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         self.chanlist = channels
+        self.bot_nick = nickname
 
     def on_welcome(self, c, e):
         for channel in self.chanlist:
@@ -24,7 +25,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
 
     def process_command(self, c, e, text):
         nick = e.source.nick
-        if nick == e.target:
+        if e.target==self.bot_nick:
             chan = nick
         else:
             chan = e.target
