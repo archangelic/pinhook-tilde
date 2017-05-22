@@ -10,7 +10,7 @@ def run(nick):
         water_diff = datetime.now() - last_watered
 
         if plant['is_dead'] or water_diff.days >= 5:
-            return '{}: Your plant is dead'.format(nick)
+            return '{}: Your {} is dead. RIP'.format(nick, plant['description'])
         elif water_diff.days == 0:
             hours = str(round(water_diff.seconds / 3600))
             water_time = ''
@@ -20,7 +20,7 @@ def run(nick):
                 water_time = '1 hour'
             else:
                 water_time = hours + ' hours'
-            msg = '{}: Good job! You watered your plant today! (About {} ago)'.format(nick, water_time)
+            msg = '{}: Good job! You watered your {} today! (About {} ago)'.format(nick, plant['description'], water_time)
             return msg
         elif 1 <= water_diff.days:
             days = str(water_diff.days)
@@ -38,5 +38,5 @@ def run(nick):
             msg = "{}: You haven't watered your plant today! (Last watered about {} and {} ago)".format(nick, w_days, w_hours)
             return msg
     except FileNotFoundError:
-        return 'Are you sure you have a plant in our beautiful garden?'
+        return '{}: Are you sure you have a plant in our beautiful garden?'.format(nick)
 
