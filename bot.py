@@ -6,6 +6,7 @@ import irc.bot
 import tildetalk
 import tv
 import watered
+import waterme
 
 class TVBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, server, port=6667):
@@ -51,9 +52,9 @@ class TVBot(irc.bot.SingleServerIRCBot):
             user = text.lstrip('!tildetalk').strip()
             message = tildetalk.run(nick, user)
             c.privmsg(chan, message)
-#        if cmd == '!cyber':
-#            message  = ebooks.cyber()
-#            c.privmsg(e.target, message)
+        if text.strip() == '!water ' + self.bot_nick:
+            message = waterme.water()
+            c.action(chan, message)
 
 
 
