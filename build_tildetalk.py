@@ -28,18 +28,7 @@ def make_sentence(word_list):
     if word_list[0].endswith(':') or word_list[0].startswith('!'):
         word_list.pop(0)
     sentence = ''.join([i+' ' for i in word_list if not i.startswith('http')]).strip()
-    while not sentence.startswith(valid_chars):
-        sentence = sentence.strip(sentence[0])
-    for word in sentence.split():
-        if word.startswith('http'):
-            sentence = sentence.replace(word, ' ')
-    for char in sentence:
-        if char not in valid_chars + (' ', '?', '!', '.', '"', "'"):
-            sentence = sentence.replace(char, '')
-    sentence = sentence.replace('  ', ' ')
-    sentence = sentence.replace('\n', '')
-    sentence = sentence.replace('\t', '')
-    return sentence.strip()
+    return sentence
 
 def make_user_file(user, sentences):
     with open(path.join('users', user), 'w') as userfile:
@@ -65,6 +54,8 @@ for line in log.split('\n'):
     try:
         user = line.split()[1]
         sentence = make_sentence(line.split()[2:])
+        if sentence and not sentence.endswith(('?', '!', '.')):
+            sentence += '.'
         if not user in text_dict:
             text_dict[user] = [sentence]
         else:
@@ -82,5 +73,5 @@ for user in listdir('users'):
         convert_to_json(user)
     except:
         print(user)
-        #traceback.print_exc()
+        traceback.print_exc()
         continue
