@@ -30,6 +30,8 @@ def make_sentence(word_list):
     elif word_list[0].startswith('!'):
         word_list = []
     sentence = ''.join([i+' ' for i in word_list if not i.startswith('http')]).strip()
+    if user == 'cosnok':
+        sentence = sentence.strip('"[]')
     return sentence
 
 def make_user_file(user, sentences):
