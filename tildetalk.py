@@ -20,32 +20,14 @@ class POSifiedText(markovify.Text):
 
 
 def get_sentence(nick, user):
-    sentence_sizes = [i for i in range(30,201) if i%5==0]
-    user_dir = 'json'
-    if user not in listdir('json') and len(user) > 8:
-        user = user[:9]
-    elif user not in listdir('json'):
-        if user not in listdir('users') and len(user) > 8:
-            user = user[:9]
-        if user not in listdir('users'):
-            return '{}: Sorry, {} not found.'.format(nick, user)
-        else:
-            user_dir = 'users'
-    try:
-        if user_dir == 'json':
-            with open(path.join('json', user)) as f:
-                text = json.load(f)
-
-            text_model = POSifiedText.from_json(text)
-        elif user_dir == 'users':
-            with open(path.join(user_dir, user)) as f:
-                text = f.read
-            text_model = markovify.Text(text)
-
-        return text_model.make_short_sentence(random.choice(sentence_sizes))
-
-    except:
-        return "{}: I'm sorry, I don't have enough info to talk like {}".format(nick, user)
+    trunc_user = user[:9]
+    if trunc_user in listdir('json'):
+        with open(path.join('json', trunc_user)) as f:
+            text = json.load(f)
+        text_model = POSifiedText.from_json(text)
+        return text_model.make_short_sentence(random.randrange(30, 201, 5))
+    else:
+        return '{}: Sorry, {} was not found'.format(nick, user)
 
 def run(nick, user):
     msg = get_sentence(nick, user)
