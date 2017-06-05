@@ -25,8 +25,10 @@ class POSifiedText(markovify.Text):
 
 
 def make_sentence(word_list):
-    if word_list[0].endswith(':') or word_list[0].startswith('!'):
+    if word_list[0].endswith(':'):
         word_list.pop(0)
+    elif word_list[0].startswith('!'):
+        word_list = []
     sentence = ''.join([i+' ' for i in word_list if not i.startswith('http')]).strip()
     return sentence
 
@@ -52,7 +54,7 @@ with open('/home/jumblesale/irc/log', 'rb') as log:
 text_dict = {}
 for line in log.split('\n'):
     try:
-        user = line.split()[1]
+        user = line.split()[1][:9]
         sentence = make_sentence(line.split()[2:])
         if sentence and not sentence.endswith(('?', '!', '.')):
             sentence += '.'
