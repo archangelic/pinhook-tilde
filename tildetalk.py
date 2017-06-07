@@ -11,7 +11,7 @@ class POSifiedText(markovify.Text):
     def word_split(self, sentence):
         words = re.split(self.word_split_pattern, sentence)
         words = [w for w in words if len(w) > 0]
-        words = [ "::".join(tag) for tag in nltk.pos_tag(words) ]
+        words = ["::".join(tag) for tag in nltk.pos_tag(words)]
         return words
 
     def word_join(self, words):
@@ -29,6 +29,7 @@ def get_sentence(nick, user):
     else:
         return '{}: Sorry, {} was not found'.format(nick, user)
 
+
 def run(nick, user):
     msg = get_sentence(nick, user)
     x = 0
@@ -38,4 +39,3 @@ def run(nick, user):
         if x == 10 and not msg:
             msg = "Sorry, there was an error"
     return msg
-

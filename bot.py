@@ -8,6 +8,7 @@ import tv
 import watered
 import waterme
 
+
 class TVBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, server, port=6667):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
@@ -26,7 +27,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
 
     def process_command(self, c, e, text):
         nick = e.source.nick
-        if e.target==self.bot_nick:
+        if e.target == self.bot_nick:
             chan = nick
         else:
             chan = e.target
@@ -55,7 +56,6 @@ class TVBot(irc.bot.SingleServerIRCBot):
         if text.strip() == '!water ' + self.bot_nick:
             message = waterme.water()
             c.action(chan, message)
-
 
 
 if __name__ == '__main__':

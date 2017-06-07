@@ -7,6 +7,6 @@ verbs = [
     'smiles',
 ]
 
+
 def water():
     return random.choice(verbs)
-

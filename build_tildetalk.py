@@ -11,11 +11,12 @@ import nltk
 valid_chars = string.ascii_letters + string.digits
 valid_chars = tuple([i for i in valid_chars])
 
+
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
         words = re.split(self.word_split_pattern, sentence)
         words = [w for w in words if len(w) > 0]
-        words = [ "::".join(tag) for tag in nltk.pos_tag(words) ]
+        words = ["::".join(tag) for tag in nltk.pos_tag(words)]
         return words
 
     def word_join(self, words):
@@ -23,21 +24,22 @@ class POSifiedText(markovify.Text):
         return sentence
 
 
-
 def make_sentence(word_list):
     if word_list[0].endswith(':'):
         word_list.pop(0)
     elif word_list[0].startswith('!'):
         word_list = []
-    sentence = ''.join([i+' ' for i in word_list if not i.startswith('http')]).strip()
+    sentence = ''.join([i + ' ' for i in word_list if not i.startswith('http')]).strip()
     if user == 'cosnok':
         sentence = sentence.strip('"[]')
     return sentence
 
+
 def make_user_file(user, sentences):
     with open(path.join('users', user), 'w') as userfile:
-            for sentence in sentences:
-                userfile.write(sentence + '\n')
+        for sentence in sentences:
+            userfile.write(sentence + '\n')
+
 
 def convert_to_json(user):
     with open(path.join('users', user)) as f:
@@ -46,6 +48,7 @@ def convert_to_json(user):
     model_json = text_model.to_json()
     with open(path.join('json', user), 'w') as juser:
         json.dump(model_json, juser)
+
 
 with open('/home/jumblesale/irc/log', 'rb') as log:
     regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")

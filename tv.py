@@ -11,6 +11,7 @@ t = Tvdb()
 config = ConfigObj('tv.conf')
 aliases = config["aliases"]
 
+
 def get_datekey(date):
     dkey = "%Y-%m-%d"
     datekey = datetime.strptime(date, dkey).strftime("%Y%m%d")
@@ -29,7 +30,7 @@ def remove_bad_dates(show):
                 eps[datekey] = (1, e)
                 datelist.append(datekey)
     elif len(show) > 1:
-        for s in range(len(show)+1):
+        for s in range(len(show) + 1):
             s += 1
             try:
                 for e in range(len(show[s])):
@@ -43,20 +44,21 @@ def remove_bad_dates(show):
     datelist.sort()
     return (eps, datelist)
 
+
 def next_ep(show, eps, datelist, today):
     scenario = 0
     for t in range(0, len(datelist)):
-        if t != len(datelist)-1:
+        if t != len(datelist) - 1:
             if datelist[t] > today:
                 future = True
             else:
                 future = False
-            prev = datelist[t-1] - today
+            prev = datelist[t - 1] - today
             if prev > 0:
                 prev_ep_in_future = True
             else:
                 prev_ep_in_future = False
-        if t == len(datelist) -1:
+        if t == len(datelist) - 1:
             if datelist[t] > today:
                 future = True
             else:
