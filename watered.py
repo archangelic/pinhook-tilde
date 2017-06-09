@@ -37,8 +37,8 @@ def run(nick):
                 w_hours = '1 hour'
             else:
                 w_hours = hours + ' hours'
-            msg = "{}: You haven't watered your plant today! (Last watered about {} and {} ago)".format(
-                nick, w_days, w_hours)
+            msg = "{}: You haven't watered your {} today! (Last watered about {} and {} ago)".format(
+                nick, plant['description'], w_days, w_hours)
             return msg
     except FileNotFoundError:
         return '{}: Are you sure you have a plant in our beautiful garden?'.format(nick)
