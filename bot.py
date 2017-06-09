@@ -8,6 +8,8 @@ import tv
 import watered
 import waterme
 
+irc.client.ServerConnection.buffer_class.errors = 'replace'
+
 
 class TVBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, server, port=6667):
