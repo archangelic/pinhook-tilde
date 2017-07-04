@@ -5,6 +5,7 @@ import ebooks
 import irc.bot
 import tildetalk
 import tv
+import swatch
 import watered
 import waterme
 
@@ -58,6 +59,9 @@ class TVBot(irc.bot.SingleServerIRCBot):
         if text.strip() == '!water ' + self.bot_nick:
             message = waterme.water()
             c.action(chan, message)
+        if cmd == '!beats':
+            message = swatch.swatch()
+            c.privmsg(chan, message)
 
 
 if __name__ == '__main__':
