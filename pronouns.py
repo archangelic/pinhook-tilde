@@ -12,7 +12,7 @@ with open('pronouns.json') as f:
 def my_pronouns(user, p):
     pronouns[user] = p
     with open('pronouns.json', 'w') as f:
-        json.dump(pronouns, f)
+        json.dump(pronouns, f, sort_keys=True, indent=4)
     return '{}: Your pronouns have been saved'.format(user)
 
 def get_pronouns(user):
