@@ -3,6 +3,7 @@ import time
 
 import ebooks
 import irc.bot
+import pronouns
 import tildetalk
 import tv
 import swatch
@@ -61,6 +62,14 @@ class TVBot(irc.bot.SingleServerIRCBot):
             c.action(chan, message)
         if cmd == '!beats':
             message = swatch.swatch()
+            c.privmsg(chan, message)
+        if cmd == '!mypronouns':
+            text = text.lstrip(cmd).strip()
+            message = pronouns.my_pronouns(nick, text)
+            c.privmsg(chan, message)
+        if cmd == '!pronouns':
+            pronouns = text.lstrip(cmd).strip()
+            message = pronouns.get_pronouns(user)
             c.privmsg(chan, message)
 
 
