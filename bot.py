@@ -68,7 +68,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
             message = pronouns.my_pronouns(nick, text)
             c.privmsg(chan, message)
         if cmd == '!pronouns':
-            pronouns = text.lstrip(cmd).strip()
+            user = text.lstrip(cmd).strip()
             message = pronouns.get_pronouns(user)
             c.privmsg(chan, message)
 
