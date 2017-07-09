@@ -36,40 +36,33 @@ class TVBot(irc.bot.SingleServerIRCBot):
         else:
             chan = e.target
         cmd = text.split(' ')[0]
+        if len(text.split(' ')) > 1:
+            arg = ''.join([i + ' ' for i in text.split(' ')[1:]]).strip()
+        else:
+            arg = ''
+        message = ''
         if cmd == '!tv':
-            show = text.lstrip('!tv').strip()
-            message = tv.next_up(show)
-            c.privmsg(chan, message)
+            message = tv.next_up(arg)
         if cmd == '!tvalias':
-            text = text.lstrip('!tvalias').strip()
-            message = tv.alias_show(text)
-            c.privmsg(chan, message)
+            message = tv.alias_show(arg)
         if cmd == '!rollcall':
-            message = 'Available commands: !tv, !doctorow, !botany, !talklike'
-            c.privmsg(chan, message)
+            message = 'Available commands: !tv, !doctorow, !botany, !talklike, !beats, !pronouns'
         if cmd == '!doctorow':
             message = ebooks.doctorow()
-            c.privmsg(chan, message)
         if cmd == '!botany':
             message = watered.run(nick)
-            c.privmsg(chan, message)
         if cmd == '!talklike':
-            user = text.lstrip('!tildetalk').strip()
-            message = tildetalk.run(nick, user)
-            c.privmsg(chan, message)
+            message = tildetalk.run(nick, arg)
         if text.strip() == '!water ' + self.bot_nick:
             message = waterme.water()
-            c.action(chan, message)
         if cmd == '!beats':
             message = swatch.swatch()
-            c.privmsg(chan, message)
         if cmd == '!mypronouns':
-            text = text.lstrip(cmd).strip()
-            message = pronouns.my_pronouns(nick, text)
-            c.privmsg(chan, message)
+            message = pronouns.my_pronouns(nick, arg)
         if cmd == '!pronouns':
-            user = text.lstrip(cmd).strip()
-            message = pronouns.get_pronouns(user)
+            message = pronouns.get_pronouns(arg)
+
+        if message:
             c.privmsg(chan, message)
 
 
