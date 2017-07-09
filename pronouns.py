@@ -18,7 +18,7 @@ def my_pronouns(user, p):
 def get_pronouns(user):
     if user in pronouns:
         msg = 'Pronouns for {}: {}'.format(user, pronouns[user])
-    elif user = '':
+    elif user == '':
         msg = 'Please enter a valid user, or use !mypronouns to declare your pronouns'
     else:
         msg = '{} has not declared any pronouns'.format(user)
