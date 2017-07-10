@@ -41,6 +41,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
         else:
             arg = ''
         message = ''
+        action = ''
         if cmd == '!tv':
             message = tv.next_up(arg)
         if cmd == '!tvalias':
@@ -54,7 +55,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
         if cmd == '!talklike':
             message = tildetalk.run(nick, arg)
         if text.strip() == '!water ' + self.bot_nick:
-            message = waterme.water()
+            action = waterme.water()
         if cmd == '!beats':
             message = swatch.swatch()
         if cmd == '!mypronouns':
@@ -64,6 +65,8 @@ class TVBot(irc.bot.SingleServerIRCBot):
 
         if message:
             c.privmsg(chan, message)
+        elif action:
+            c.action(chan, action)
 
 
 if __name__ == '__main__':
