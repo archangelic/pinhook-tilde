@@ -2,6 +2,7 @@
 import time
 
 import ebooks
+import fucksgiven
 import irc.bot
 import pronouns
 import tildetalk
@@ -62,6 +63,8 @@ class TVBot(irc.bot.SingleServerIRCBot):
             message = pronouns.my_pronouns(nick, arg)
         if cmd == '!pronouns':
             message = pronouns.get_pronouns(arg)
+        if cmd == '!fucksgiven':
+            message = fucksgiven.run(nick)
 
         if message:
             c.privmsg(chan, message)
