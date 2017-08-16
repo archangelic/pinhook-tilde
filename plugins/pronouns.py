@@ -3,7 +3,7 @@ from os import listdir, path
 
 json_file = path.join(path.dirname(path.abspath(__file__)), 'pronouns.json')
 
-if json_file not in listdir():
+if 'pronouns.json' not in listdir(path.dirname(path.abspath(__file__))):
     pronouns = {}
     with open(json_file, 'w') as f:
         json.dump(pronouns, f)
