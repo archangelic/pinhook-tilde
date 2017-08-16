@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
 import time
 
-import ebooks
-import fucksgiven
 import irc.bot
-import pronouns
-import tildetalk
-import tv
-import swatch
-import watered
-import waterme
+from plugins import *
 
 irc.client.ServerConnection.buffer_class.errors = 'replace'
 

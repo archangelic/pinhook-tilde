@@ -1,17 +1,19 @@
 import json
-from os import listdir
+from os import listdir, path
 
-if 'pronouns.json' not in listdir():
+json_file = path.join(path.dirname(path.abspath(__file__)), 'pronouns.json')
+
+if json_file not in listdir():
     pronouns = {}
-    with open('pronouns.json', 'w') as f:
+    with open(json_file, 'w') as f:
         json.dump(pronouns, f)
 
-with open('pronouns.json') as f:
+with open(json_file) as f:
     pronouns = json.load(f)
 
 def my_pronouns(user, p):
     pronouns[user] = p
-    with open('pronouns.json', 'w') as f:
+    with open(json_file, 'w') as f:
         json.dump(pronouns, f, sort_keys=True, indent=4)
     return '{}: Your pronouns have been saved'.format(user)
 

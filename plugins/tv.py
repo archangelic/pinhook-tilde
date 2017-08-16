@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 from configobj import ConfigObj
 from tvdb_api import Tvdb, tvdb_shownotfound
@@ -8,7 +9,8 @@ cmds = {
     '!tvalias': "Adds an alias to quickly search for shows"
 }
 t = Tvdb()
-config = ConfigObj('tv.conf')
+conf_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tv.conf')
+config = ConfigObj(conf_file)
 aliases = config["aliases"]
 
 
