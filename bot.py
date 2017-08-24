@@ -58,8 +58,8 @@ class TVBot(irc.bot.SingleServerIRCBot):
             message = pronouns.get_pronouns(arg)
         if cmd == '!fucksgiven':
             message = fucksgiven.run(nick)
-        if cmd == '!shakespear':
-            message = shakespear.get_sentence()
+        if cmd == '!shakespear' or cmd == '!shakespeare':
+            message = shakespeare.get_sentence()
 
         if message:
             c.privmsg(chan, message)
