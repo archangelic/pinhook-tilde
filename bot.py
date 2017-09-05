@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import time
+import sys
 
 import irc.bot
 from plugins import *
@@ -12,6 +13,7 @@ class TVBot(irc.bot.SingleServerIRCBot):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         self.chanlist = channels
         self.bot_nick = nickname
+        self.operator = 'archangelic'
 
     def on_welcome(self, c, e):
         for channel in self.chanlist:
@@ -36,6 +38,12 @@ class TVBot(irc.bot.SingleServerIRCBot):
             arg = ''
         message = ''
         action = ''
+        if cmd == '!join' and nick == self.operator:
+            c.join(arg)
+            message = '{}: joined {}'.format(nick, arg)
+        if cmd == '!quit' and nick == self.operator:
+            c.quit("See y'all later!")
+            quit()
         if cmd == '!tv':
             message = tv.next_up(arg)
         if cmd == '!tvalias':
@@ -68,10 +76,17 @@ class TVBot(irc.bot.SingleServerIRCBot):
 
 
 if __name__ == '__main__':
-    channels = [
+    default_channels = [
         '#arch-dev',
         '#tildetown',
         '#bots',
     ]
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--test-mode':
+            channels = ['#arch-dev']
+        else:
+            channels = default_channels
+    else:
+        channels = default_channels
     bot = TVBot(channels, 'pinhook', 'localhost')
     bot.start()
