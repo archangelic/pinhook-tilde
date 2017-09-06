@@ -6,6 +6,8 @@ import re
 import markovify
 import nltk
 
+commands = ['!shakespeare', '!shakespear']
+
 json_file = path.join(path.dirname(path.abspath(__file__)), 'shakespeare.json')
 
 class POSifiedText(markovify.Text):
@@ -20,7 +22,7 @@ class POSifiedText(markovify.Text):
         return sentence
 
 
-def get_sentence():
+def run(**kwargs):
     with open(json_file) as f:
         text = json.load(f)
     text_model = POSifiedText.from_json(text)

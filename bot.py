@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+import imp
+import os
 import time
 import sys
 
 import irc.bot
-from plugins import *
 
 irc.client.ServerConnection.buffer_class.errors = 'replace'
 
@@ -14,6 +15,20 @@ class TVBot(irc.bot.SingleServerIRCBot):
         self.chanlist = channels
         self.bot_nick = nickname
         self.operator = 'archangelic'
+
+        # load the plugins
+        plugins = {}
+        for m in os.listdir('plugins'):
+            if m.endswith('.py'):
+                name = m[:-3]
+                fp, pathname, description = imp.find_module(name, ['plugins'])
+                plugins[name] = imp.load_module(name, fp, pathname, description)
+
+        # load the commands
+        self.cmds = {}
+        for i in plugins:
+            for c in plugins[i].commands:
+                self.cmds[c] = plugins[i]
 
     def on_welcome(self, c, e):
         for channel in self.chanlist:
@@ -36,43 +51,22 @@ class TVBot(irc.bot.SingleServerIRCBot):
             arg = ''.join([i + ' ' for i in text.split(' ')[1:]]).strip()
         else:
             arg = ''
-        message = ''
-        action = ''
+        output = ()
         if cmd == '!join' and nick == self.operator:
             c.join(arg)
-            message = '{}: joined {}'.format(nick, arg)
-        if cmd == '!quit' and nick == self.operator:
+            c.privmsg(chan, '{}: joined {}'.format(nick, arg))
+        elif cmd == '!quit' and nick == self.operator:
             c.quit("See y'all later!")
             quit()
-        if cmd == '!tv':
-            message = tv.next_up(arg)
-        if cmd == '!tvalias':
-            message = tv.alias_show(arg)
-        if cmd == '!rollcall':
-            message = 'Available commands: !tv, !doctorow, !botany, !talklike, !beats, !pronouns'
-        if cmd == '!doctorow':
-            message = ebooks.doctorow()
-        if cmd == '!botany':
-            message = watered.run(nick)
-        if cmd == '!talklike':
-            message = tildetalk.run(nick, arg)
-        if text.strip() == '!water ' + self.bot_nick:
-            action = waterme.water()
-        if cmd == '!beats':
-            message = swatch.swatch()
-        if cmd == '!mypronouns':
-            message = pronouns.my_pronouns(nick, arg)
-        if cmd == '!pronouns':
-            message = pronouns.get_pronouns(arg)
-        if cmd == '!fucksgiven':
-            message = fucksgiven.run(nick)
-        if cmd == '!shakespear' or cmd == '!shakespeare':
-            message = shakespeare.get_sentence()
+        elif cmd in self.cmds:
+            output = self.cmds[cmd].run(cmd=cmd, arg=arg, nick=nick)
 
-        if message:
-            c.privmsg(chan, message)
-        elif action:
-            c.action(chan, action)
+        if not output:
+            pass
+        elif output[0] == 'message':
+            c.privmsg(chan, output[1])
+        elif output[0] == 'action':
+            c.action(chan, output[1])
 
 
 if __name__ == '__main__':

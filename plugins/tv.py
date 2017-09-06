@@ -4,10 +4,8 @@ import os
 from configobj import ConfigObj
 from tvdb_api import Tvdb, tvdb_shownotfound
 
-cmds = {
-    '!tv': "Tells you the next air date for shows you look up.",
-    '!tvalias': "Adds an alias to quickly search for shows"
-}
+commands = ['!tv', '!tvalias']
+
 t = Tvdb()
 conf_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tv.conf')
 config = ConfigObj(conf_file)
@@ -163,10 +161,19 @@ def next_up(text):
         message = showstring
     except tvdb_shownotfound:
         message = 'Cannot find show "' + text + '"'
-    except:
-        message = "An error occured."
+    except Exception as e:
+        message = e
     return message
 
 
 def alias_show(text):
     return modify_alias(text)
+
+def run(**kwargs):
+    cmd = kwargs['cmd']
+    arg = kwargs['arg']
+    if cmd == '!tv':
+        return ('message', next_up(arg))
+    elif cmd == '!tvalias':
+        return ('message', alias_show(arg))
+

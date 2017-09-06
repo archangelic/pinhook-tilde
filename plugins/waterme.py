@@ -1,5 +1,7 @@
 import random
 
+commands = ['!water']
+
 verbs = [
     'wriggles slightly',
     'sighs cutely',
@@ -8,5 +10,8 @@ verbs = [
 ]
 
 
-def water():
-    return random.choice(verbs)
+def run(**kwargs):
+    if kwargs['arg'] == 'pinhook':
+        return ('action', random.choice(verbs))
+    else:
+        return None

@@ -6,6 +6,7 @@ import re
 import markovify
 import nltk
 
+commands = ['!talklike']
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -30,12 +31,14 @@ def get_sentence(nick, user):
         return '{}: Sorry, {} was not found'.format(nick, user)
 
 
-def run(nick, user):
+def run(**kwargs):
+    nick = kwargs['nick']
+    user = kwargs['arg']
     msg = get_sentence(nick, user)
     x = 0
     while not msg:
         msg = get_sentence(nick, user)
         x += 1
         if x == 10 and not msg:
-            msg = "Sorry, there was an error"
-    return msg
+            msg = 'Sorry, there was an error'
+    return ('message', msg)

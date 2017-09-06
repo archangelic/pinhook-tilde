@@ -10,6 +10,7 @@
 
 import time
 
+commands = ['!beats']
 
 def beats():
     '''Swatch beats'''
@@ -32,6 +33,9 @@ def beats():
 def swatch():
     '''Swatch time'''
     return '@%06.2f' % (beats())
+
+def run(**kwargs):
+    return ('message', swatch())
 
 if __name__ == '__main__':
     print(swatch())

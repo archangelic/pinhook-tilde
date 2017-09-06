@@ -1,7 +1,10 @@
 from os import listdir, path
 import re
 
-def run(nick):
+commands = ['!fucksgiven']
+
+def run(**kwargs):
+    nick = kwargs['nick']
     trunc_nick = nick[:9]
     if trunc_nick in listdir('users'):
         with open(path.join('users', trunc_nick)) as u:
@@ -11,4 +14,4 @@ def run(nick):
             ending = 's'
         else:
             ending = ''
-        return "{} gives exactly {} fuck{}".format(nick, count, ending)
+        return ('message', '{} gives exactly {} fuck{}'.format(nick, count, ending))
