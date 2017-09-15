@@ -5,4 +5,4 @@ __pycache__/
 doctorow_ebooks.txt
 *.json
 .indexme
-
+*.swp
