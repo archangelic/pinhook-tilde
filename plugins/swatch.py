@@ -10,7 +10,7 @@
 
 import time
 
-commands = ['!beats']
+commands = ['!beats', '!beat']
 
 def beats():
     '''Swatch beats'''
