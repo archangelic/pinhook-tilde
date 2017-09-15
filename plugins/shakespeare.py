@@ -26,5 +26,5 @@ def run(**kwargs):
     with open(json_file) as f:
         text = json.load(f)
     text_model = POSifiedText.from_json(text)
-    return text_model.make_sentence()
+    return ("message", text_model.make_sentence())
 
