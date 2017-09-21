@@ -53,8 +53,11 @@ def run(**kwargs):
         if not msg:
             msg = '{}: could not generate text for {}'.format(nick, user)
     elif cmd == '!fuse':
-        user1, user2 = user.replace(' ', '').split(',')
-        user1 = user1[:9]
-        user2 = user2[:9]
-        msg = fuse_users(user1, user2)
+        try:
+            user1, user2 = user.split()
+            user1 = user1[:9]
+            user2 = user2[:9]
+            msg = fuse_users(user1, user2)
+        except:
+            msg = "{}: Please give only 2 users".format(nick)
     return ('message', msg)
