@@ -58,6 +58,8 @@ class TVBot(irc.bot.SingleServerIRCBot):
         elif cmd == '!quit' and nick == self.operator:
             c.quit("See y'all later!")
             quit()
+        elif cmd == '!rollcall':
+            c.privmsg(chan, 'Available commands: ' + ''.join([i + ', ' for i in self.cmds.keys()]).strip(', '))
         elif cmd in self.cmds:
             output = self.cmds[cmd].run(cmd=cmd, arg=arg, nick=nick)
 
