@@ -26,7 +26,7 @@ def get_sentence(nick, user):
         with open(path.join('json', trunc_user)) as f:
             text = json.load(f)
         text_model = POSifiedText.from_json(text)
-        return text_model.make_short_sentence(random.randrange(30, 201, 5))
+        return text_model.make_short_sentence(random.randrange(30, 201, 5), tries=100)
     else:
         return '{}: Sorry, {} was not found'.format(nick, user)
 
@@ -38,7 +38,7 @@ def fuse_users(user1, user2):
             user2_text = u2.read()
         text = user1_text + user2_text
         markov_model = POSifiedText(text)
-        return markov_model.make_short_sentence(random.randrange(30, 201, 5))
+        return markov_model.make_short_sentence(random.randrange(30, 201, 5), tries=100)
     elif user1 not in listdir('users'):
         return '{} was not found'.format(user1)
     elif user2 not in listdir('users'):
