@@ -58,6 +58,8 @@ def run(**kwargs):
             user1 = user1[:9]
             user2 = user2[:9]
             msg = fuse_users(user1, user2)
+            if not msg:
+                msg = '{}: could not generate text for {} and {}'.format(nick, user1, user2)
         except:
             msg = "{}: Please give only 2 users".format(nick)
     return ('message', msg)
