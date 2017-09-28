@@ -16,5 +16,5 @@ if __name__ == '__main__':
             channels = default_channels
     else:
         channels = default_channels
-    bot = pinhook.bot.Bot(channels, 'pinhook-test', 'localhost', ops=['archangelic'])
+    bot = pinhook.bot.Bot(channels, 'pinhook', 'localhost', ops=['archangelic'])
     bot.start()
