@@ -33,6 +33,8 @@ def run(**kwargs):
     user = kwargs['nick']
     p = kwargs['arg']
     if cmd == '!pronouns':
-        return get_pronouns(user)
+        if not p:
+            p = user
+        return get_pronouns(p)
     elif cmd == '!mypronouns':
         return my_pronouns(user, p)
