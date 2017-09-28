@@ -1,6 +1,6 @@
 import random
+import pinhook.plugin
 
-commands = ['!water']
 
 verbs = [
     'wriggles slightly',
@@ -10,8 +10,9 @@ verbs = [
 ]
 
 
+@pinhook.plugin.register('!water')
 def run(**kwargs):
     if kwargs['arg'] == 'pinhook':
-        return ('action', random.choice(verbs))
+        return pinhook.plugin.action(random.choice(verbs))
     else:
         return None

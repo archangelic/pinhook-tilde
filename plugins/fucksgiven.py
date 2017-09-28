@@ -1,8 +1,9 @@
 from os import listdir, path
 import re
 
-commands = ['!fucksgiven']
+import pinhook.plugin
 
+@pinhook.plugin.register('!fucksgiven')
 def run(**kwargs):
     nick = kwargs['nick']
     trunc_nick = nick[:9]
@@ -14,4 +15,4 @@ def run(**kwargs):
             ending = 's'
         else:
             ending = ''
-        return ('message', '{} gives exactly {} fuck{}'.format(nick, count, ending))
+        return pinhook.plugin.message('{} gives exactly {} fuck{}'.format(nick, count, ending))

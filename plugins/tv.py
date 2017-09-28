@@ -2,9 +2,9 @@ from datetime import datetime
 import os
 
 from configobj import ConfigObj
+import pinhook.plugin
 from tvdb_api import Tvdb, tvdb_shownotfound
 
-commands = ['!tv', '!tvalias']
 
 t = Tvdb()
 conf_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tv.conf')
@@ -169,11 +169,13 @@ def next_up(text):
 def alias_show(text):
     return modify_alias(text)
 
+@pinhook.plugin.register('!tv')
+@pinhook.plugin.register('!tvalias')
 def run(**kwargs):
     cmd = kwargs['cmd']
     arg = kwargs['arg']
     if cmd == '!tv':
-        return ('message', next_up(arg))
+        return pinhook.plugin.message(next_up(arg))
     elif cmd == '!tvalias':
-        return ('message', alias_show(arg))
+        return pinhook.plugin.message(alias_show(arg))
 
