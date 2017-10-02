@@ -5,8 +5,7 @@ import re
 
 import markovify
 import nltk
-
-commands = ['!shakespeare', '!shakespear']
+import pinhook.plugin
 
 json_file = path.join(path.dirname(path.abspath(__file__)), 'shakespeare.json')
 
@@ -22,9 +21,11 @@ class POSifiedText(markovify.Text):
         return sentence
 
 
+@pinhook.plugin.register('!shakespeare')
+@pinhook.plugin.register('!shakespear')
 def run(**kwargs):
     with open(json_file) as f:
         text = json.load(f)
     text_model = POSifiedText.from_json(text)
-    return ("message", text_model.make_sentence())
+    return pinhook.plugin.message(text_model.make_sentence())
 

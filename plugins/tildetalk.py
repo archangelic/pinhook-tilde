@@ -5,8 +5,8 @@ import re
 
 import markovify
 import nltk
+import pinhook.plugin
 
-commands = ['!talklike', '!fuse']
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -44,6 +44,8 @@ def fuse_users(user1, user2):
     elif user2 not in listdir('users'):
         return '{} was not found'.format(user2)
 
+@pinhook.plugin.register('!talklike')
+@pinhook.plugin.register('!fuse')
 def run(**kwargs):
     cmd = kwargs['cmd']
     nick = kwargs['nick']
@@ -62,4 +64,4 @@ def run(**kwargs):
                 msg = '{}: could not generate text for {} and {}'.format(nick, user1, user2)
         except:
             msg = "{}: Please give only 2 users".format(nick)
-    return ('message', msg)
+    return pinhook.plugin.message(msg)

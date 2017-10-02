@@ -10,7 +10,7 @@
 
 import time
 
-commands = ['!beats', '!beat']
+import pinhook.plugin
 
 def beats():
     '''Swatch beats'''
@@ -30,12 +30,11 @@ def beats():
     return beat
 
 
-def swatch():
+@pinhook.plugin.register('!beat')
+@pinhook.plugin.register('!beats')
+def swatch(**kwargs):
     '''Swatch time'''
-    return '@%06.2f' % (beats())
-
-def run(**kwargs):
-    return ('message', swatch())
+    return pinhook.plugin.message('@%06.2f' % (beats()))
 
 if __name__ == '__main__':
     print(swatch())
