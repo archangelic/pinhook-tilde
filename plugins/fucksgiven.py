@@ -4,9 +4,9 @@ import re
 import pinhook.plugin
 
 @pinhook.plugin.register('!fucksgiven')
-def run(**kwargs):
+def run(msg):
     nick = kwargs['nick']
-    trunc_nick = nick[:9]
+    trunc_nick = msg.nick[:9]
     if trunc_nick in listdir('users'):
         with open(path.join('users', trunc_nick)) as u:
             text = u.read()

@@ -11,10 +11,10 @@ jaraco.itertools==2.0.1
 jaraco.logging==1.5
 jaraco.stream==1.1.2
 jaraco.text==1.9.2
-markovify==0.6.3
+markovify==0.6.4
 more-itertools==3.2.0
 nltk==3.2.5
-pinhook==0.0.0
+pinhook==1.0.2
 pkg-resources==0.0.0
 pytz==2017.2
 requests==2.18.4

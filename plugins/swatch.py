@@ -32,7 +32,7 @@ def beats():
 
 @pinhook.plugin.register('!beat')
 @pinhook.plugin.register('!beats')
-def swatch(**kwargs):
+def swatch(msg):
     '''Swatch time'''
     return pinhook.plugin.message('@%06.2f' % (beats()))
 
