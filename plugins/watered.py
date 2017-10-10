@@ -5,8 +5,8 @@ import pinhook.plugin
 
 
 @pinhook.plugin.register('!botany')
-def run(**kwargs):
-    nick = kwargs['nick']
+def run(msg):
+    nick = msg.nick
     try:
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)

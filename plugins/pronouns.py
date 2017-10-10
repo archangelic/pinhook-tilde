@@ -30,13 +30,10 @@ def get_pronouns(user):
 
 @pinhook.plugin.register('!pronouns')
 @pinhook.plugin.register('!mypronouns')
-def run(**kwargs):
-    cmd = kwargs['cmd']
-    user = kwargs['nick']
-    p = kwargs['arg']
-    if cmd == '!pronouns':
-        if not p:
-            p = user
-        return get_pronouns(p)
-    elif cmd == '!mypronouns':
-        return my_pronouns(user, p)
+def run(msg):
+    if msg.cmd == '!pronouns':
+        if not msg.arg:
+            msg.arg = msg.user
+        return get_pronouns(msg.arg)
+    elif msg.cmd == '!mypronouns':
+        return my_pronouns(msg.user, msg.arg)

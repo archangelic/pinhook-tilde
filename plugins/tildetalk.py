@@ -46,15 +46,14 @@ def fuse_users(user1, user2):
 
 @pinhook.plugin.register('!talklike')
 @pinhook.plugin.register('!fuse')
-def run(**kwargs):
-    cmd = kwargs['cmd']
-    nick = kwargs['nick']
-    user = kwargs['arg']
-    if cmd == '!talklike':
+def run(msg):
+    nick = msg.nick
+    user = msg.arg
+    if msg.cmd == '!talklike':
         msg = get_sentence(nick, user)
         if not msg:
             msg = '{}: could not generate text for {}'.format(nick, user)
-    elif cmd == '!fuse':
+    elif msg.cmd == '!fuse':
         try:
             user1, user2 = user.split()
             user1 = user1[:9]

@@ -171,11 +171,9 @@ def alias_show(text):
 
 @pinhook.plugin.register('!tv')
 @pinhook.plugin.register('!tvalias')
-def run(**kwargs):
-    cmd = kwargs['cmd']
-    arg = kwargs['arg']
-    if cmd == '!tv':
-        return pinhook.plugin.message(next_up(arg))
-    elif cmd == '!tvalias':
-        return pinhook.plugin.message(alias_show(arg))
+def run(msg):
+    if msg.cmd == '!tv':
+        return pinhook.plugin.message(next_up(msg.arg))
+    elif msg.cmd == '!tvalias':
+        return pinhook.plugin.message(alias_show(msg.arg))
 

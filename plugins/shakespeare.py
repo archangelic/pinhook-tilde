@@ -23,7 +23,7 @@ class POSifiedText(markovify.Text):
 
 @pinhook.plugin.register('!shakespeare')
 @pinhook.plugin.register('!shakespear')
-def run(**kwargs):
+def run(msg):
     with open(json_file) as f:
         text = json.load(f)
     text_model = POSifiedText.from_json(text)
