@@ -18,7 +18,7 @@ hearts = [
 ]
 
 @pinhook.plugin.register('!hearts')
-def make_hearts(**kwargs):
+def make_hearts(msg):
     message = ''
     for i in range(0, 10):
         message += ' ' + random.choice(hearts)
