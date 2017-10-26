@@ -33,7 +33,7 @@ def get_pronouns(user):
 def run(msg):
     if msg.cmd == '!pronouns':
         if not msg.arg:
-            msg.arg = msg.user
+            msg.arg = msg.nick
         return get_pronouns(msg.arg)
     elif msg.cmd == '!mypronouns':
-        return my_pronouns(msg.user, msg.arg)
+        return my_pronouns(msg.nick, msg.arg)
