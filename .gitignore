@@ -1,7 +1,6 @@
 venv/
 json/
 users/
-jumblesale_log/
 __pycache__/
 doctorow_ebooks.txt
 *.json

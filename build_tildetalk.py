@@ -49,16 +49,6 @@ def convert_to_json(user):
     with open(path.join('json', user), 'w') as juser:
         json.dump(model_json, juser)
 
-def check_js_logs():
-    for user in listdir('jumblesale_log'):
-        with open(path.join('jumblesale_log', user)) as u:
-            text = u.read()
-        if user in listdir('users'):
-            with open(path.join('users', user)) as f:
-                text += f.read()
-        with open(path.join('users', user), 'w') as n:
-            n.write(text)
-
 
 with open('/home/archangelic/irc/log', 'rb') as log:
     regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
@@ -85,10 +75,8 @@ for entry in text_dict:
     if valid:
         make_user_file(entry, text_dict[entry])
 
-check_js_logs()
-
 for user in listdir('users'):
-    try: 
+    try:
         convert_to_json(user)
     except:
         print(user)
