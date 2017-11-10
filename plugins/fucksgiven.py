@@ -15,3 +15,5 @@ def run(msg):
         else:
             ending = ''
         return pinhook.plugin.message('{} gives exactly {} fuck{}'.format(msg.nick, count, ending))
+    else:
+        return pinhook.plugin.message("Sorry, I couldn't find your username")
