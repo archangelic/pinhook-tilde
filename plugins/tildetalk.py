@@ -31,17 +31,16 @@ def get_sentence(nick, user):
         return '{}: Sorry, {} was not found'.format(nick, user)
 
 def fuse_users(user1, user2):
-    if user1 in listdir('users') and user2 in listdir('users'):
-        with open(path.join('users', user1)) as u1:
-            user1_text = u1.read()
-        with open(path.join('users', user2)) as u2:
-            user2_text = u2.read()
-        text = user1_text + user2_text
-        markov_model = POSifiedText(text)
+    if user1 in listdir('json') and user2 in listdir('json'):
+        with open(path.join('json', user1)) as u1:
+            user1_text = POSifiedText.from_json(json.load(u1))
+        with open(path.join('json', user2)) as u2:
+            user2_text = POSifiedText.from_json(json.load(u2))
+        markov_model = markovify.combine(models=[user1_text, user2_text])
         return markov_model.make_short_sentence(random.randrange(30, 201, 5), tries=100)
-    elif user1 not in listdir('users'):
+    elif user1 not in listdir('json'):
         return '{} was not found'.format(user1)
-    elif user2 not in listdir('users'):
+    elif user2 not in listdir('json'):
         return '{} was not found'.format(user2)
 
 @pinhook.plugin.register('!talklike')
