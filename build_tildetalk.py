@@ -71,7 +71,7 @@ for line in log.split('\n'):
         continue
 
 for entry in text_dict:
-    valid = re.match('^[\w_]+$', entry) is not None
+    valid = re.match('^[\w_\-]+$', entry)
     if valid:
         make_user_file(entry, text_dict[entry])
 
