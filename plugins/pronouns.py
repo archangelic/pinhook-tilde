@@ -25,7 +25,7 @@ def get_pronouns(user):
     elif user == '':
         msg = 'Please enter a valid user, or use !mypronouns to declare your pronouns'
     else:
-        msg = '{} has not declared any pronouns'.format(user)
+        msg = '{} has not declared any pronouns. Use `!mypronouns <pronouns here>` to add your pronouns!'.format(user)
     return pinhook.plugin.message(msg)
 
 @pinhook.plugin.register('!pronouns')
@@ -36,4 +36,8 @@ def run(msg):
             msg.arg = msg.nick
         return get_pronouns(msg.arg)
     elif msg.cmd == '!mypronouns':
-        return my_pronouns(msg.nick, msg.arg)
+        if msg.arg:
+            out = my_pronouns(msg.nick, msg.arg)
+        else:
+            out = get_pronouns(msg.nick)
+        return out
