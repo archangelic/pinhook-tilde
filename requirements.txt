@@ -1,5 +1,6 @@
 certifi==2017.11.5
 chardet==3.0.4
+configobj==5.0.6
 emoji==0.4.5
 idna==2.6
 inflect==0.2.5
