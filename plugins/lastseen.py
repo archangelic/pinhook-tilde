@@ -6,7 +6,6 @@ import pinhook.plugin
 @pinhook.plugin.register('!lastseen')
 def last_seen(msg):
     entries = []
-    print(msg.arg[:9])
     with open('/home/archangelic/irc/log', 'rb') as f:
         lines = f.readlines()
     for line in lines:
@@ -18,11 +17,14 @@ def last_seen(msg):
                 entries.append(float(d))
         except:
             continue
-    print(entries)
     if entries:
         entries.sort()
         last_entry = entries[-1]
-        out = '{} last spoke in chat on {}'.format(msg.arg, datetime.fromtimestamp(last_entry))
+        if msg.arg in msg.nick_list:
+            leader = '{} is currently online and in the channel!'.format(msg.arg)
+        else:
+            leader = msg.arg
+        out = '{} last spoke in chat on {}'.format(leader, datetime.fromtimestamp(last_entry))
     else:
         out = 'Sorry, {} was not found'.format(msg.arg)
     return pinhook.plugin.message(out)
