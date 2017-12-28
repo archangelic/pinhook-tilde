@@ -4,8 +4,7 @@ import requests
 
 @pinhook.plugin.register('!rms')
 def rms(msg):
-    result = requests.get("https://rms.sexy")
-    soup = BeautifulSoup(result.content)
+    soup = BeautifulSoup(requests.get('https://rms.sexy').content)
     image = 'https://rms.sexy' + soup.find(class_='stallman')['src']
     return pinhook.plugin.message(image)
 
