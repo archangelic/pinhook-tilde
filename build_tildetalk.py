@@ -49,6 +49,20 @@ def convert_to_json(user):
     with open(path.join('json', user), 'w') as juser:
         json.dump(model_json, juser)
 
+def user_changed(user, sentences):
+    usertext = ''.join([s + '\n' for s in sentences])
+    try:
+        if user and user in listdir('users'):
+            with open(path.join('users', user)) as f:
+                text = f.read()
+            if usertext != text:
+                return True
+        elif user:
+            return True
+    except:
+        pass
+
+
 
 with open('/home/archangelic/irc/log', 'rb') as log:
     regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
@@ -70,14 +84,18 @@ for line in log.split('\n'):
     except IndexError:
         continue
 
+changed_users = []
 for entry in text_dict:
     valid = re.match('^[\w-]+$', entry)
-    if valid:
+    if valid and user_changed(entry, text_dict[entry]):
+        changed_users.append(entry)
+    if entry in changed_users:
         make_user_file(entry, text_dict[entry])
 
 for user in listdir('users'):
     try:
-        convert_to_json(user)
+        if user in changed_users:
+            convert_to_json(user)
     except:
         print(user)
         traceback.print_exc()
