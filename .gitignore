@@ -6,3 +6,4 @@ doctorow_ebooks.txt
 *.json
 .indexme
 *.swp
+*.log
