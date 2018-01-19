@@ -11,5 +11,5 @@ def tube(msg):
         msg.logger.debug(match.group(1))
         cmd = shlex.split(r'youtube-dl -e "{}"'.format(match.group(1)))
         title = subprocess.check_output(cmd).decode().strip()
-        out = '["{} on hooktube"]'.format(title)
+        out = '["{}"]'.format(title)
         return p.message(out)
