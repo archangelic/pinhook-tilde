@@ -21,7 +21,10 @@ class POSifiedText(markovify.Text):
 
 
 def get_sentence(nick, user):
-    trunc_user = user[:9]
+    if user=='tilde.town':
+        trunc_user = user
+    else:
+        trunc_user = user[:9]
     if trunc_user in listdir('json'):
         with open(path.join('json', trunc_user)) as f:
             text = json.load(f)
@@ -47,7 +50,10 @@ def fuse_users(user1, user2):
 @pinhook.plugin.register('!fuse')
 def run(msg):
     nick = msg.nick
-    user = msg.arg
+    if msg.arg:
+        user = msg.arg
+    else:
+        user = msg.nick
     if msg.cmd == '!talklike':
         msg = get_sentence(nick, user)
         if not msg:

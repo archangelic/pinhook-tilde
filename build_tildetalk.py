@@ -71,6 +71,7 @@ with open('/home/archangelic/irc/log', 'rb') as log:
     log = log.replace('ACTION', '')
 
 text_dict = {}
+text_dict['tilde.town'] = []
 for line in log.split('\n'):
     try:
         user = line.split()[1][:9]
@@ -79,15 +80,17 @@ for line in log.split('\n'):
             sentence += '.'
         if not user in text_dict:
             text_dict[user] = [sentence]
+            text_dict['tilde.town'].append(sentence)
         else:
             text_dict[user].append(sentence)
+            text_dict['tilde.town'].append(sentence)
     except IndexError:
         continue
 
 changed_users = []
 for entry in text_dict:
     valid = re.match('^[\w-]+$', entry)
-    if valid and user_changed(entry, text_dict[entry]):
+    if (valid or entry == 'tilde.town') and user_changed(entry, text_dict[entry]):
         changed_users.append(entry)
     if entry in changed_users:
         make_user_file(entry, text_dict[entry])
