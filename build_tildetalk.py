@@ -2,7 +2,9 @@
 import json
 from os import path, listdir
 import re
+import shlex
 import string
+import subprocess
 import traceback
 
 import markovify
@@ -63,7 +65,6 @@ def user_changed(user, sentences):
         pass
 
 
-
 with open('/home/archangelic/irc/log', 'rb') as log:
     regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
     log = regex.sub(b'', log.read())
@@ -74,7 +75,7 @@ text_dict = {}
 text_dict['tilde.town'] = []
 for line in log.split('\n'):
     try:
-        user = line.split()[1][:9]
+        user = line.split()[1]
         sentence = make_sentence(line.split()[2:])
         if sentence and not sentence.endswith(('?', '!', '.')):
             sentence += '.'

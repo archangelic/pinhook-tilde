@@ -153,6 +153,7 @@ def next_up(text):
         else:
             stext = text
         show = t[stext]
+        print(show[1].__dict__)
         sname = show['seriesname']
         today = int(datetime.now().strftime("%Y%m%d"))
         eps, datelist = remove_bad_dates(show)

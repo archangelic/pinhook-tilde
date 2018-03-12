@@ -1,14 +1,13 @@
 import json
-import random
-from os import listdir, path
 import re
+from os import path
 
 import markovify
 import nltk
+import requests
 import pinhook.plugin
 
 shakespeare = path.join(path.dirname(path.abspath(__file__)), 'shakespeare.json')
-cyber = path.join(path.dirname(path.abspath(__file__)), 'cyber.json')
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -21,17 +20,15 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
 
+with open(shakespeare) as s:
+    shakespeare = POSifiedText.from_json(json.load(s))
 
-@pinhook.plugin.register('!shakespeare')
 @pinhook.plugin.register('!shakespear')
 @pinhook.plugin.register('!cyber')
 def run(msg):
     if msg.cmd == '!shakespeare' or msg.cmd == '!shakespear':
-        json_file = shakespeare
+        out = shakespeare.make_sentence()
     elif msg.cmd == '!cyber':
-        json_file = cyber
-    with open(json_file) as f:
-        text = json.load(f)
-    text_model = POSifiedText.from_json(text)
-    return pinhook.plugin.message(text_model.make_sentence())
+        out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
+    return pinhook.plugin.message(out)
 
