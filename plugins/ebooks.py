@@ -18,10 +18,25 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
 
+ebooksdir = path.join(path.dirname(path.abspath(__file__)), 'ebooks')
+
+with open(path.join(ebooksdir, 'evil.json')) as e:
+    evil = POSifiedText.from_json(json.load(e))
+
+with open(path.join(ebooksdir, 'btc.json')) as b:
+    bitcoin = POSifiedText.from_json(json.load(b))
 
 @pinhook.plugin.register('!cyber')
-def run(msg):
-    if msg.cmd == '!cyber':
-        out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
+def cyber(msg):
+    out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
     return pinhook.plugin.message(out)
 
+@pinhook.plugin.register('!lordmarkov')
+def lordmarkov(msg):
+    out = 'If I Ever Become an Evil Overlord: '
+    out += evil.make_short_sentence(476)
+    return pinhook.plugin.message(out)
+
+@pinhook.plugin.register('!bitcoin')
+def btc(msg):
+    return pinhook.plugin.message(bitcoin.make_short_sentence(512))
