@@ -6,6 +6,7 @@ WIDE_MAP[0x20] = 0x3000
 def widen(s):
     return s.translate(WIDE_MAP)
 
+@p.register('!vapourwave')
 @p.register('!vaporwave')
 def wave(msg):
     return p.message(widen(msg.arg))

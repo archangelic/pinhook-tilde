@@ -19,6 +19,8 @@ def run(msg):
         out = 'Please enter a message to toot!'
     return pinhook.plugin.message(out)
 
+@pinhook.plugin.register('!vapourtoot')
+@pinhook.plugin.register('!vaportoot')
 @pinhook.plugin.register('!tootwave')
 def tootwave(msg):
     if msg.arg:
