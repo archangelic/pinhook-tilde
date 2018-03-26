@@ -23,9 +23,6 @@ ebooksdir = path.join(path.dirname(path.abspath(__file__)), 'ebooks')
 with open(path.join(ebooksdir, 'evil.json')) as e:
     evil = POSifiedText.from_json(json.load(e))
 
-with open(path.join(ebooksdir, 'btc.json')) as b:
-    bitcoin = POSifiedText.from_json(json.load(b))
-
 @pinhook.plugin.register('!cyber')
 def cyber(msg):
     out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
@@ -39,4 +36,12 @@ def lordmarkov(msg):
 
 @pinhook.plugin.register('!bitcoin')
 def btc(msg):
+    with open(path.join(ebooksdir, 'btc.json')) as b:
+            bitcoin = POSifiedText.from_json(json.load(b))
     return pinhook.plugin.message(bitcoin.make_short_sentence(512))
+
+@pinhook.plugin.register('!lisp')
+def lisp(msg):
+    with open(path.join(ebooksdir, 'lisp.json')) as l:
+            lisp_markov = POSifiedText.from_json(json.load(l))
+    return pinhook.plugin.message(lisp_markov.make_short_sentence(512))

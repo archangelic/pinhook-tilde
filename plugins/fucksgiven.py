@@ -8,7 +8,7 @@ def run(msg):
     if msg.nick in listdir('users'):
         with open(path.join('users', msg.nick)) as u:
             text = u.read().lower()
-            count = sum(1 for _ in re.finditer(r'\bfuck[a-z]*\b', text))
+        count = len(re.findall(r'\b(\w*f+u+(cc|c+k|q)\w*)\b', text))
         if count != 1:
             ending = 's'
         else:
