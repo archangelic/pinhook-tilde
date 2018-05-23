@@ -6,10 +6,10 @@ import re
 import markovify
 import nltk
 
-bad_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer']
+bad_users = ['cosnok', 'pinhook', 'quote_bot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
 btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)', re.IGNORECASE)
-lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile)\b', re.IGNORECASE)
+lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell)\b', re.IGNORECASE)
 patterns = {'btc.json': btc_pattern, 'lisp.json': lisp_pattern}
 
 with open('/home/archangelic/irc/log', 'rb') as i:

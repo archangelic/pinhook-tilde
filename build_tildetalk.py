@@ -14,7 +14,7 @@ valid_chars = string.ascii_letters + string.digits
 valid_chars = tuple([i for i in valid_chars])
 
 
-class POSifiedText(markovify.Text):
+class POSifiedText(markovify.NewlineText):
     def word_split(self, sentence):
         words = re.split(self.word_split_pattern, sentence)
         words = [w for w in words if len(w) > 0]
@@ -65,33 +65,33 @@ def user_changed(user, sentences):
         pass
 
 
-with open('/home/archangelic/irc/log', 'rb') as log:
+with open('log', 'rb') as log:
     regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
     log = regex.sub(b'', log.read())
     log = log.decode('UTF-8', errors='replace')
     log = log.replace('ACTION', '')
 
+with open('nick_merge.json') as c:
+    canon = json.load(c)
+
 text_dict = {}
-text_dict['tilde.town'] = []
 for line in log.split('\n'):
     try:
         user = line.split()[1]
+        if user in canon:
+            user = canon[user]
         sentence = make_sentence(line.split()[2:])
-        if sentence and not sentence.endswith(('?', '!', '.')):
-            sentence += '.'
-        if not user in text_dict:
+        if not user in text_dict and sentence:
             text_dict[user] = [sentence]
-            text_dict['tilde.town'].append(sentence)
-        else:
+        elif sentence:
             text_dict[user].append(sentence)
-            text_dict['tilde.town'].append(sentence)
     except IndexError:
         continue
 
 changed_users = []
 for entry in text_dict:
     valid = re.match('^[\w-]+$', entry)
-    if (valid or entry == 'tilde.town') and user_changed(entry, text_dict[entry]):
+    if valid and user_changed(entry, text_dict[entry]):
         changed_users.append(entry)
     if entry in changed_users:
         make_user_file(entry, text_dict[entry])
