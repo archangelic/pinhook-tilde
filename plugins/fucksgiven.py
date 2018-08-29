@@ -1,19 +1,17 @@
-from os import listdir, path
-import re
+import json
 
 import pinhook.plugin
 
 @pinhook.plugin.register('!fucksgiven')
 def run(msg):
-    trunc_nick = msg.nick[:9]
-    if trunc_nick in listdir('users'):
-        with open(path.join('users', trunc_nick)) as u:
-            text = u.read()
-            count = sum(1 for _ in re.finditer(r'\b%s\b' % re.escape('fuck'), text))
+    with open('/home/archangelic/fucks.json') as f:
+        fucks = json.load(f)
+    if msg.nick in fucks['users']:
+        count = fucks['users'][msg.nick]['total']
         if count != 1:
             ending = 's'
         else:
             ending = ''
         return pinhook.plugin.message('{} gives exactly {} fuck{}'.format(msg.nick, count, ending))
     else:
-        return pinhook.plugin.message("Sorry, I couldn't find your username")
+        return pinhook.plugin.message("Sorry, I couldn't find your username. I'm sure you'll show up in my data soon!")

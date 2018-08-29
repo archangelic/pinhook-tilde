@@ -1,14 +1,11 @@
 import json
-import random
-from os import listdir, path
 import re
+from os import path
 
 import markovify
 import nltk
+import requests
 import pinhook.plugin
-
-shakespeare = path.join(path.dirname(path.abspath(__file__)), 'shakespeare.json')
-cyber = path.join(path.dirname(path.abspath(__file__)), 'cyber.json')
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -21,17 +18,30 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
 
+ebooksdir = path.join(path.dirname(path.abspath(__file__)), 'ebooks')
 
-@pinhook.plugin.register('!shakespeare')
-@pinhook.plugin.register('!shakespear')
+with open(path.join(ebooksdir, 'evil.json')) as e:
+    evil = POSifiedText.from_json(json.load(e))
+
 @pinhook.plugin.register('!cyber')
-def run(msg):
-    if msg.cmd == '!shakespeare' or msg.cmd == '!shakespear':
-        json_file = shakespeare
-    elif msg.cmd == '!cyber':
-        json_file = cyber
-    with open(json_file) as f:
-        text = json.load(f)
-    text_model = POSifiedText.from_json(text)
-    return pinhook.plugin.message(text_model.make_sentence())
+def cyber(msg):
+    out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
+    return pinhook.plugin.message(out)
 
+@pinhook.plugin.register('!lordmarkov')
+def lordmarkov(msg):
+    out = 'If I Ever Become an Evil Overlord: '
+    out += evil.make_short_sentence(476)
+    return pinhook.plugin.message(out)
+
+@pinhook.plugin.register('!bitcoin')
+def btc(msg):
+    with open(path.join(ebooksdir, 'btc.json')) as b:
+            bitcoin = POSifiedText.from_json(json.load(b))
+    return pinhook.plugin.message(bitcoin.make_short_sentence(512))
+
+@pinhook.plugin.register('!lisp')
+def lisp(msg):
+    with open(path.join(ebooksdir, 'lisp.json')) as l:
+            lisp_markov = POSifiedText.from_json(json.load(l))
+    return pinhook.plugin.message(lisp_markov.make_short_sentence(512))

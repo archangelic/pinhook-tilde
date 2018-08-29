@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
+import configparser
 import sys
 
 import pinhook.bot
 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 if __name__ == '__main__':
-    default_channels = [
-        '#arch-dev',
-        '#tildetown',
-        '#bots',
-    ]
+    default_channels = ['#'+_ for _ in config['channels']]
     if len(sys.argv) > 1:
         if sys.argv[1] == '--test-mode':
             channels = ['#arch-dev']
