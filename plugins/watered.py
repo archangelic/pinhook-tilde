@@ -19,7 +19,7 @@ def run(msg):
         water_diff = datetime.now() - last_watered
 
         if plant['is_dead'] or water_diff.days >= 5:
-            return pinhook.plugin.message('{}: Your {} is dead. RIP'.format(nick, plant['description']))
+            return pinhook.plugin.message('{}: {}\'s {} is dead. RIP'.format(who, nick, plant['description']))
         elif water_diff.days == 0:
             hours = str(round(water_diff.seconds / 3600))
             water_time = ''
