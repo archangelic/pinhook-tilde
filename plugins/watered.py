@@ -6,7 +6,11 @@ import pinhook.plugin
 
 @pinhook.plugin.register('!botany')
 def run(msg):
-    nick = msg.nick
+    who = msg.nick
+    if msg.arg:
+        nick = msg.arg
+    else:
+        nick = msg.nick
     try:
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)
@@ -25,8 +29,8 @@ def run(msg):
                 water_time = '1 hour'
             else:
                 water_time = hours + ' hours'
-            msg = '{}: Good job! You watered your {} today! (About {} ago)'.format(
-                nick, plant['description'], water_time)
+            msg = '{}: {}\'s {} was watered today! (About {} ago)'.format(
+                who, nick, plant['description'], water_time)
             return pinhook.plugin.message(msg)
         elif 1 <= water_diff.days:
             days = str(water_diff.days)
@@ -41,8 +45,8 @@ def run(msg):
                 w_hours = '1 hour'
             else:
                 w_hours = hours + ' hours'
-            msg = "{}: You haven't watered your {} today! (Last watered about {} and {} ago)".format(
-                nick, plant['description'], w_days, w_hours)
+            msg = "{}: {}'s {} hasn't been watered today! (Last watered about {} and {} ago)".format(
+                who, nick, plant['description'], w_days, w_hours)
             return pinhook.plugin.message(msg)
     except FileNotFoundError:
-        return pinhook.plugin.message('{}: Are you sure you have a plant in our beautiful garden?'.format(nick))
+        return pinhook.plugin.message('{}: Are you sure {} has a plant in our beautiful garden?'.format(who, nick))
