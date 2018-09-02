@@ -15,7 +15,18 @@ def run(msg):
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)
 
-        last_watered = datetime.utcfromtimestamp(plant['last_watered'])
+        with open('/home/{}/.botany/visitors.json'.format(nick)) as visitors_json:
+            visitors = json.load(visitors_json)
+
+        last_visit = sorted([v['timestamp'] for v in visitors])[:1]
+
+        if last_visit > plant['last_watered']:
+            last_watered = last_visit
+        else:
+            last_watered = plant['last_watered']
+
+        last_watered = datetime.utcfromtimestamp(last_watered)
+
         water_diff = datetime.now() - last_watered
 
         if plant['is_dead'] or water_diff.days >= 5:
