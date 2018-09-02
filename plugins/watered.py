@@ -14,11 +14,13 @@ def run(msg):
     try:
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)
+        try:
+            with open('/home/{}/.botany/visitors.json'.format(nick)) as visitors_json:
+                visitors = json.load(visitors_json)
 
-        with open('/home/{}/.botany/visitors.json'.format(nick)) as visitors_json:
-            visitors = json.load(visitors_json)
-
-        last_visit = sorted([v['timestamp'] for v in visitors])[:1]
+            last_visit = sorted([v['timestamp'] for v in visitors])[-1]
+        except FileNotFoundError:
+            last_visit = 0
 
         if last_visit > plant['last_watered']:
             last_watered = last_visit
