@@ -18,14 +18,17 @@ def run(msg):
             with open('/home/{}/.botany/visitors.json'.format(nick)) as visitors_json:
                 visitors = json.load(visitors_json)
 
-            last_visit = sorted([v['timestamp'] for v in visitors])[-1]
+            last_visit = visitors[-1]['timestamp']
+            visitor = visitors[-1]['user']
         except FileNotFoundError:
             last_visit = 0
+            visitor = ''
 
         if last_visit > plant['last_watered']:
             last_watered = last_visit
         else:
             last_watered = plant['last_watered']
+            visitor = nick
 
         last_watered = datetime.utcfromtimestamp(last_watered)
 
@@ -42,8 +45,8 @@ def run(msg):
                 water_time = '1 hour'
             else:
                 water_time = hours + ' hours'
-            msg = '{}: {}\'s {} was watered today! (About {} ago)'.format(
-                who, nick, plant['description'], water_time)
+            msg = '{}: {}\'s {} was watered today! (About {} ago by {})'.format(
+                who, nick, plant['description'], water_time, visitor)
             return pinhook.plugin.message(msg)
         elif 1 <= water_diff.days:
             days = str(water_diff.days)
@@ -58,8 +61,8 @@ def run(msg):
                 w_hours = '1 hour'
             else:
                 w_hours = hours + ' hours'
-            msg = "{}: {}'s {} hasn't been watered today! (Last watered about {} and {} ago)".format(
-                who, nick, plant['description'], w_days, w_hours)
+            msg = "{}: {}'s {} hasn't been watered today! (Last watered about {} and {} ago by {})".format(
+                who, nick, plant['description'], w_days, w_hours, visitor)
             return pinhook.plugin.message(msg)
     except FileNotFoundError:
         return pinhook.plugin.message('{}: Are you sure {} has a plant in our beautiful garden?'.format(who, nick))
