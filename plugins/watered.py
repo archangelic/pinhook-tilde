@@ -17,9 +17,12 @@ def run(msg):
         try:
             with open('/home/{}/.botany/visitors.json'.format(nick)) as visitors_json:
                 visitors = json.load(visitors_json)
-
-            last_visit = visitors[-1]['timestamp']
-            visitor = visitors[-1]['user']
+            if visitors:
+                last_visit = visitors[-1]['timestamp']
+                visitor = visitors[-1]['user']
+            else:
+                last_visit = 0
+                visitor = ''
         except FileNotFoundError:
             last_visit = 0
             visitor = ''
