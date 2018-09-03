@@ -64,10 +64,12 @@ def run(msg):
             w_days = days + ' days'
         hours = str(round(water_diff.seconds / 3600))
         w_hours = ''
-        if hours == '1':
-            w_hours = '1 hour'
+        if hours == '0':
+            w_hours = ''
+        elif hours == '1':
+            w_hours = ' and 1 hour'
         else:
-            w_hours = hours + ' hours'
-        msg = "{}: {}'s {} hasn't been watered today! (Last watered about {} and {} ago by {})".format(
+            w_hours = ' and {} hours'.format(hours)
+        msg = "{}: {}'s {} hasn't been watered today! (Last watered about {}{} ago by {})".format(
             who, nick, plant['description'], w_days, w_hours, visitor)
         return pinhook.plugin.message(msg)
