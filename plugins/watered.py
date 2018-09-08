@@ -12,6 +12,11 @@ def run(msg):
         nick = msg.arg
     else:
         nick = msg.nick
+
+    if who == nick:
+        greeting = '{}: Your'.format(who)
+    else:
+        greeting = '{}: {}\'s'.format(who, nick)
     try:
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
             plant = json.load(plant_json)
@@ -42,7 +47,7 @@ def run(msg):
 
     if plant['is_dead'] or water_diff.days >= 5:
         condolences = ['RIP', 'Press F to Pay Respects']
-        return pinhook.plugin.message('{}: {}\'s {} is dead. {}'.format(who, nick, plant['description'], random.choice(condolences)))
+        return pinhook.plugin.message('{} {} is dead. {}'.format(greeting, plant['description'], random.choice(condolences)))
     elif water_diff.days == 0:
         hours = str(round(water_diff.seconds / 3600))
         water_time = ''
@@ -52,8 +57,8 @@ def run(msg):
             water_time = '1 hour'
         else:
             water_time = hours + ' hours'
-        msg = '{}: {}\'s {} was watered today! (About {} ago by {})'.format(
-            who, nick, plant['description'], water_time, visitor)
+        msg = '{} {} was watered today! (About {} ago by {})'.format(
+            greeting, plant['description'], water_time, visitor)
         return pinhook.plugin.message(msg)
     elif 1 <= water_diff.days:
         days = str(water_diff.days)
@@ -70,6 +75,6 @@ def run(msg):
             w_hours = ' and 1 hour'
         else:
             w_hours = ' and {} hours'.format(hours)
-        msg = "{}: {}'s {} hasn't been watered today! (Last watered about {}{} ago by {})".format(
-            who, nick, plant['description'], w_days, w_hours, visitor)
+        msg = "{} {} hasn't been watered today! (Last watered about {}{} ago by {})".format(
+            greeting, plant['description'], w_days, w_hours, visitor)
         return pinhook.plugin.message(msg)
