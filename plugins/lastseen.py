@@ -1,21 +1,19 @@
 from datetime import datetime
+import re
 
 import pinhook.plugin
 
 @pinhook.plugin.register('!seen')
 @pinhook.plugin.register('!lastseen')
 def last_seen(msg):
+    pattern = re.compile(r'^(?:P<stamp>\d+)\t{}\t'.format(msg.arg))
     entries = []
     with open('/home/archangelic/irc/log', 'rb') as f:
         lines = f.readlines()
     for line in lines:
-        try:
-            l = line.split(b'\t')
-            d = l[0]
-            u = l[1]
-            entries.append(float(d))
-        except:
-            continue
+        result = pattern.search(line)
+        if result:
+            entries.append(result.group('stamp')
     if entries:
         entries.sort()
         last_entry = entries[-1]
