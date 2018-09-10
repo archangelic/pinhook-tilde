@@ -13,7 +13,7 @@ def last_seen(msg):
     for line in lines:
         result = pattern.search(line)
         if result:
-            entries.append(result.group('stamp')
+            entries.append(result.group('stamp'))
     if entries:
         entries.sort()
         last_entry = entries[-1]
