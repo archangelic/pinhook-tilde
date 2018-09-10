@@ -11,6 +11,7 @@ def last_seen(msg):
     with open('/home/archangelic/irc/log', 'rb') as f:
         lines = f.readlines()
     for line in lines:
+        line = line.decode('utf-8', 'ignore')
         result = pattern.search(line)
         if result:
             entries.append(result.group('stamp'))
