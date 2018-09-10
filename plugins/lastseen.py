@@ -12,7 +12,7 @@ def last_seen(msg):
         lines = f.readlines()
     for line in lines:
         line = line.decode('utf-8', 'ignore')
-        result = pattern.search(line)
+        result = pattern.match(line)
         if result:
             entries.append(result.group('stamp'))
     if entries:
