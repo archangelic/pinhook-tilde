@@ -1,26 +1,16 @@
-#!/usr/bin/env python3
-
-'''Swatch time / Internet time'''
-
-# Andrew Pennebaker
-# Copyright 2007 Andrew Pennebaker
-#
-# Credits:
-# http://www.krugle.com/files/cvs/cvs.jabberstudio.org/neutron/plugins/time_plugin.py
-
 import time
 
 import pinhook.plugin
 
-def beats():
-    '''Swatch beats'''
-
+def beats(b='swatch'):
     t = time.gmtime()
     h, m, s = t.tm_hour, t.tm_min, t.tm_sec
 
     utc = 3600 * h + 60 * m + s  # UTC
-
-    bmt = utc + 3600  # Biel Mean Time (BMT)
+    if b == 'swatch':
+        bmt = utc + 3600  # Biel Mean Time (BMT)
+    elif b == 'tilde':
+        bmt = utc
 
     beat = bmt / 86.4
 
@@ -33,8 +23,10 @@ def beats():
 @pinhook.plugin.register('!beat')
 @pinhook.plugin.register('!beats')
 def swatch(msg):
-    '''Swatch time'''
     return pinhook.plugin.message('@%06.2f' % (beats()))
 
-if __name__ == '__main__':
-    print(swatch())
+@pinhook.plugin.register('!ttocks')
+@pinhook.plugin.register('!tocks')
+def tildetocks(msg):
+    return pinhook.plugin.message('@%06.2f' % (beats('tilde')))
+
