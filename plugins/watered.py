@@ -5,6 +5,13 @@ import time
 
 import pinhook.plugin
 
+verbs = [
+    'wriggles slightly',
+    'sighs cutely',
+    'wriggles',
+    'smiles',
+]
+
 
 @pinhook.plugin.register('!botany')
 def run(msg):
@@ -82,7 +89,9 @@ def run(msg):
 
 @pinhook.plugin.register('!water')
 def water(msg):
-    if not msg.arg:
+    if msg.arg == msg.botnick:
+        return pinhook.plugin.action(random.choice(verbs))
+    elif not msg.arg:
         nick = msg.nick
     else:
         nick = msg.arg
