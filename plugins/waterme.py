@@ -10,7 +10,7 @@ verbs = [
 ]
 
 
-@pinhook.plugin.register('!water')
+#@pinhook.plugin.register('!water')
 def run(msg):
     if msg.arg == msg.botnick:
         return pinhook.plugin.action(random.choice(verbs))

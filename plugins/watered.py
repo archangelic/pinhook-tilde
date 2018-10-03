@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import json
 import random
+import time
 
 import pinhook.plugin
 
@@ -78,3 +79,22 @@ def run(msg):
         msg = "{} {} hasn't been watered today! (Last watered about {}{} ago by {})".format(
             greeting, plant['description'], w_days, w_hours, visitor)
         return pinhook.plugin.message(msg)
+
+@pinhook.plugin.register('!water')
+def water(msg):
+    if not msg.arg:
+        nick = msg.nick
+    else:
+        nick = msg.arg
+
+    try:
+        filename = '/home/{}/.botany/visitors.json'.format(nick)
+        with open(filename) as v:
+            visitors = json.load(v)
+        visitors.append({'timestamp': int(time.time()), 'user': 'pinhook'})
+        with open(filename, 'w') as v:
+            json.dump(visitors, v, indent=2)
+        return pinhook.plugin.action("waters {}'s plant".format(nick))
+    except Exception as e:
+        msg.logger.error(e)
+        return pinhook.plugin.message("{}: could not find plant for {}".format(msg.nick, nick))
