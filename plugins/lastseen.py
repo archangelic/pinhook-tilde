@@ -19,7 +19,7 @@ def last_seen(msg):
         entries.sort()
         last_entry = entries[-1]
         if msg.arg in msg.nick_list and msg.channel == '#tildetown':
-            leader = '{} is currently online and in the channel! Last spoke on {}'.format(msg.arg, datetime.fromtimestamp(last_entry))
+            leader = '{} is currently online and in the channel!'.format(msg.arg)
         else:
             leader = msg.arg
         out = '{} last spoke in chat on {}'.format(leader, datetime.fromtimestamp(last_entry))
