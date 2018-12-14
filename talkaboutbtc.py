@@ -10,7 +10,7 @@ bad_users = ['cosnok', 'pinhook', 'quote_bot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
 btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)', re.IGNORECASE)
 lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell)\b', re.IGNORECASE)
-nude_pattern = re.compile(r'(nud(e|ity|s)|nake(d(ness)?|y)', re.IGNORECASE)
+nude_pattern = re.compile(r'n(ud(e|ity|s)|ake(d(ness)?|y)|sfw)', re.IGNORECASE)
 patterns = {
     'btc.json': btc_pattern,
     'lisp.json': lisp_pattern,
@@ -70,6 +70,5 @@ if __name__=='__main__':
             sentence = check_line(pattern, line)
             if sentence:
                 sentences.append(sentence)
-        print(p, len(sentences))
         make_model(sentences, filename)
 
