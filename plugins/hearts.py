@@ -17,10 +17,18 @@ hearts = [
     ':sparkling_heart:',
 ]
 
-@pinhook.plugin.register('!hearts')
-def make_hearts(msg):
+def make_hearts_str():
     message = ''
     for i in range(0, 10):
         message += ' ' + random.choice(hearts)
     message = emoji.emojize(message.replace(' ', ''), use_aliases=True)
-    return pinhook.plugin.message(message)
+    return message
+
+@pinhook.plugin.register('!hearts')
+def make_hearts(msg):
+    return pinhook.plugin.message(make_hearts_str())
+
+@pinhook.plugin.register('!rainbowhearts')
+def make_rainbow_hearts(msg):
+    return pinhook.plugin.message("!rainbow {}".format(make_hearts_str()))
+
