@@ -6,7 +6,7 @@ import re
 import markovify
 import nltk
 
-bad_users = ['cosnok', 'pinhook', 'quote_bot']
+bot_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer', 'sedbot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
 btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)', re.IGNORECASE)
 lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell)\b', re.IGNORECASE)
@@ -24,11 +24,11 @@ class POSifiedText(markovify.NewlineText):
     def word_split(self, sentence):
         words = re.split(self.word_split_pattern, sentence)
         words = [w for w in words if len(w) > 0]
-        words = ["::".join(tag) for tag in nltk.pos_tag(words)]
+        words = [":-:".join(tag) for tag in nltk.pos_tag(words)]
         return words
 
     def word_join(self, words):
-        sentence = " ".join(word.split("::")[0] for word in words)
+        sentence = " ".join(word.split(":-:")[0] for word in words)
         return sentence
 
 def make_sentence(sentence):
@@ -43,7 +43,7 @@ def make_sentence(sentence):
 def check_line(pattern, sentence):
     s = sentence.split('\t')
     try:
-        if s[1] not in bad_users and not s[2].startswith('pinhook:'):
+        if s[1] not in bot_users and not s[2].startswith('pinhook:'):
             results = pattern.search(sentence)
         if results:
             sentence = make_sentence(s[2])
