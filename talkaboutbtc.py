@@ -9,7 +9,7 @@ import nltk
 bot_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer', 'sedbot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
 btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)', re.IGNORECASE)
-lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell)\b', re.IGNORECASE)
+lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b', re.IGNORECASE)
 nude_pattern = re.compile(r'n(ud(e|ity|s)|ake(d(ness)?|y)|sfw)', re.IGNORECASE)
 patterns = {
     'btc.json': btc_pattern,
