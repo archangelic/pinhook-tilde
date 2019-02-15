@@ -13,19 +13,29 @@ if 'pronouns.json' not in listdir(path.dirname(path.abspath(__file__))):
 with open(json_file) as f:
     pronouns = json.load(f)
 
+def get_dot_files():
+    dot_pronouns = {}
+    homedirs = [user for user in listdir('/home') if path.isdir(path.join('/home', user))]
+    for user in homedirs:
+        dot_file = path.join('/home', user, '.pronouns')
+        if path.exists(dot_file):
+            with open(dot_file) as d:
+                dot_pronouns[user] = d.read().strip().replace('\n', '/')
+    return dot_pronouns
+
 def my_pronouns(user, p):
-    pronouns[user] = p
-    with open(json_file, 'w') as f:
-        json.dump(pronouns, f, sort_keys=True, indent=4)
-    return pinhook.plugin.message('{}: Your pronouns have been saved'.format(user))
+    return pinhook.plugin.message("{}: Please use `echo '{}' > ~/.pronouns` to set your pronouns".format(user, p))
 
 def get_pronouns(user):
-    if user in pronouns:
+    dot_pronouns = get_dot_files()
+    if user in dot_pronouns:
+        msg = 'Pronouns for {}: {}'.format(user, dot_pronouns[user])
+    elif user in pronouns:
         msg = 'Pronouns for {}: {}'.format(user, pronouns[user])
     elif user == '':
-        msg = 'Please enter a valid user, or use !mypronouns to declare your pronouns'
+        msg = "Please enter a valid user, or use `echo '<pronouns here>' > ~/.pronouns` to declare your pronouns"
     else:
-        msg = '{} has not declared any pronouns. Use `!mypronouns <pronouns here>` to add your pronouns!'.format(user)
+        msg = "{} has not declared any pronouns. Use `echo '<pronouns here>' > ~/.pronouns` to add your pronouns!".format(user)
     return pinhook.plugin.message(msg)
 
 @pinhook.plugin.register('!pronouns')
@@ -37,7 +47,7 @@ def run(msg):
         return get_pronouns(msg.arg)
     elif msg.cmd == '!mypronouns':
         if msg.arg:
-            out = my_pronouns(msg.nick, msg.arg)
+            return my_pronouns(msg.nick, msg.arg)
         else:
-            out = get_pronouns(msg.nick)
-        return out
+            return get_pronouns(msg.nick)
+
