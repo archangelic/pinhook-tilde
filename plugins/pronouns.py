@@ -21,14 +21,27 @@ def get_dot_files():
         if path.exists(dot_file):
             with open(dot_file) as d:
                 dot_pronouns[user] = d.read().strip().replace('\n', '/')
+        else:
+            dot_pronouns[user] = ''
     return dot_pronouns
 
 def my_pronouns(user, p):
-    return pinhook.plugin.message("{}: Please use `echo '{}' > ~/.pronouns` to set your pronouns".format(user, p))
+    if user in get_dot_files():
+        return pinhook.plugin.message("{}: Please use `echo '{}' > ~/.pronouns` to set your pronouns".format(user, p))
+    else:
+        pronouns[user] = p
+        with open(json_file, 'w') as j:
+            json.dump(pronouns, j)
+        return pinhook.plugin.message('{}: your pronouns have been set to "{}"'.format(user,p))
 
 def get_pronouns(user):
     dot_pronouns = get_dot_files()
     if user in dot_pronouns:
+        if dot_pronouns[user]:
+            is_dot_user = True
+        else:
+            is_dot_user = False
+    if is_dot_user:
         msg = 'Pronouns for {}: {}'.format(user, dot_pronouns[user])
     elif user in pronouns:
         msg = 'Pronouns for {}: {}'.format(user, pronouns[user])
