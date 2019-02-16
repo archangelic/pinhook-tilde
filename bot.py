@@ -15,5 +15,12 @@ if __name__ == '__main__':
             channels = config['channels']
     else:
         channels = config['channels']
-    bot = pinhook.bot.Bot(channels, 'pinhook', 'localhost', ops=['archangelic'], ns_pass=config['password'], nickserv='nickserv')
+    bot = pinhook.bot.Bot(
+        channels,
+        'pinhook',
+        'localhost',
+        ops=['archangelic'],
+        ns_pass=config['password'],
+        nickserv='nickserv'
+    )
     bot.start()
