@@ -10,7 +10,4 @@ key.txt
 config.ini
 config.json
 plugins/pronouns.json
-btc.json
-evil.json
-lisp.json
-naked.json
+plugins/ebooks/

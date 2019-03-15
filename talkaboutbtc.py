@@ -13,7 +13,7 @@ lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|gui
 nude_pattern = re.compile(r'n(ud(e|ity|s)|ake(d(ness)?|y)|sfw)', re.IGNORECASE)
 python_pattern = re.compile(r'python(ic|ista)?', re.IGNORECASE)
 patterns = {
-    'btc.json': btc_pattern,
+    'bitcoin.json': btc_pattern,
     'lisp.json': lisp_pattern,
     'naked.json': nude_pattern,
     'python.json': python_pattern,

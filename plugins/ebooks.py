@@ -1,6 +1,6 @@
 import json
 import re
-from os import path
+import os
 
 import markovify
 import nltk
@@ -18,14 +18,17 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split(":-:")[0] for word in words)
         return sentence
 
-ebooksdir = path.join(path.dirname(path.abspath(__file__)), 'ebooks')
+ebooksdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ebooks')
+
+def get_subjects():
+    return sorted([os.path.splitext(i)[0] for i in os.listdir(ebooksdir) if i != 'evil.json'])
 
 def generate_message(ebook):
-    with open(path.join(ebooksdir, ebook)) as e:
+    with open(os.path.join(ebooksdir, ebook)) as e:
         model = POSifiedText.from_json(json.load(e))
     return pinhook.plugin.message(model.make_short_sentence(512))
 
-with open(path.join(ebooksdir, 'evil.json')) as e:
+with open(os.path.join(ebooksdir, 'evil.json')) as e:
     evil = POSifiedText.from_json(json.load(e))
 
 @pinhook.plugin.register('!cyber')
@@ -39,18 +42,9 @@ def lordmarkov(msg):
     out += evil.make_short_sentence(476)
     return pinhook.plugin.message(out)
 
-@pinhook.plugin.register('!bitcoin')
-def btc(msg):
-    return generate_message('btc.json')
-
-@pinhook.plugin.register('!lisp')
-def lisp(msg):
-    return generate_message('lisp.json')
-
-@pinhook.plugin.register('!naked')
-def naked(msg):
-    return generate_message('naked.json')
-
-@pinhook.plugin.register('!python')
-def python(msg):
-    return generate_message('python.json')
+@pinhook.plugin.register('!talkabout')
+def talkabout(msg):
+    if msg.arg.lower() in get_subjects():
+        return generate_message('{}.json'.format(msg.arg))
+    else:
+        return pinhook.plugin.message('please select one of the following: {}'.format(', '.join(get_subjects())))
