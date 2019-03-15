@@ -50,3 +50,7 @@ def lisp(msg):
 @pinhook.plugin.register('!naked')
 def naked(msg):
     return generate_message('naked.json')
+
+@pinhook.plugin.register('!python')
+def python(msg):
+    return generate_message('python.json')
