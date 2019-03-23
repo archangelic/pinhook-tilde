@@ -45,6 +45,6 @@ def lordmarkov(msg):
 @pinhook.plugin.register('!talkabout')
 def talkabout(msg):
     if msg.arg.lower() in get_subjects():
-        return generate_message('{}.json'.format(msg.arg))
+        return generate_message('{}.json'.format(msg.arg.lower()))
     else:
         return pinhook.plugin.message('please select one of the following: {}'.format(', '.join(get_subjects())))
