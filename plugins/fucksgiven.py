@@ -2,6 +2,7 @@ import json
 
 import pinhook.plugin
 
+@pinhook.plugin.register('!hecksgiven')
 @pinhook.plugin.register('!fucksgiven')
 def run(msg):
     with open('/home/archangelic/public_html/fucks.json') as f:
