@@ -12,11 +12,13 @@ btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc
 lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b', re.IGNORECASE)
 nude_pattern = re.compile(r'n(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)', re.IGNORECASE)
 python_pattern = re.compile(r'python(ic|ista)?', re.IGNORECASE)
+fuck_pattern = re.compile(r'(#?[\w-]*f+u+(cc|c+k|q|k\b|kk)[\w-]*)', re.IGNORECASE)
 patterns = {
     'bitcoin.json': btc_pattern,
     'lisp.json': lisp_pattern,
     'naked.json': nude_pattern,
     'python.json': python_pattern,
+    'fuck.json': fuck_pattern,
 }
 
 with open('/home/archangelic/irc/log', 'rb') as i:
