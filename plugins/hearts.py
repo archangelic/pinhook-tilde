@@ -15,6 +15,9 @@ hearts = [
     ':revolving_hearts:',
     ':cupid:',
     ':sparkling_heart:',
+    ':gift_heart:',
+    ':hearts:',
+    ':heart_decoration:',
 ]
 
 def make_hearts_str():
