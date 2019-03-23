@@ -6,6 +6,7 @@ import markovify
 import nltk
 import requests
 import pinhook.plugin
+import toml
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -23,10 +24,16 @@ ebooksdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ebooks')
 def get_subjects():
     return sorted([os.path.splitext(i)[0] for i in os.listdir(ebooksdir) if i != 'evil.json'])
 
-def generate_message(ebook):
+def generate_message(ebook, tries=50):
+    patterns = toml.load('ebooks_patterns.toml')['patterns']
+    patterns = {k: re.compile(v, re.IGNORECASE) for k,v in patterns.items()}
     with open(os.path.join(ebooksdir, ebook)) as e:
         model = POSifiedText.from_json(json.load(e))
-    return pinhook.plugin.message(model.make_short_sentence(512))
+    for x in range(tries):
+        sentence = model.make_short_sentence(400)
+        if patterns[ebook].search(sentence):
+            return pinhook.plugin.message(sentence)
+    return None
 
 with open(os.path.join(ebooksdir, 'evil.json')) as e:
     evil = POSifiedText.from_json(json.load(e))

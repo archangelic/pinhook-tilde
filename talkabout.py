@@ -5,21 +5,10 @@ import re
 
 import markovify
 import nltk
+import toml
 
 bot_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer', 'sedbot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
-btc_pattern = re.compile(r'(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)', re.IGNORECASE)
-lisp_pattern = re.compile(r'\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b', re.IGNORECASE)
-nude_pattern = re.compile(r'n(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)', re.IGNORECASE)
-python_pattern = re.compile(r'python(ic|ista)?', re.IGNORECASE)
-fuck_pattern = re.compile(r'(#?[\w-]*f+u+(cc|c+k|q|k\b|kk)[\w-]*)', re.IGNORECASE)
-patterns = {
-    'bitcoin.json': btc_pattern,
-    'lisp.json': lisp_pattern,
-    'naked.json': nude_pattern,
-    'python.json': python_pattern,
-    'fuck.json': fuck_pattern,
-}
 
 with open('/home/archangelic/irc/log', 'rb') as i:
         lines = i.readlines()
@@ -34,6 +23,11 @@ class POSifiedText(markovify.NewlineText):
     def word_join(self, words):
         sentence = " ".join(word.split(":-:")[0] for word in words)
         return sentence
+
+def get_patterns():
+    patterns = toml.load('ebooks_patterns.toml')['patterns']
+    patterns = {k: re.compile(v, re.IGNORECASE) for k,v in patterns.items()}
+    return patterns
 
 def make_sentence(sentence):
     word_list = sentence.split()
@@ -64,6 +58,7 @@ def make_model(sentences, filename):
         json.dump(model_json, j)
 
 if __name__=='__main__':
+    patterns = get_patterns()
     for p in patterns:
         sentences = []
         filename = p

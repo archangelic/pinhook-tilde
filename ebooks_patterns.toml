@@ -1,0 +1,6 @@
+[patterns]
+"bitcoin.json" = '(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)'
+"lisp.json" = '\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b'
+"naked.json" = 'n(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)'
+"python.json" = 'python(ic|ista)?'
+"fuck.json" = '(#?[\w-]*f+u+(cc|c+k|q|k\b|kk)[\w-]*)'
