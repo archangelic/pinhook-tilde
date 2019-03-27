@@ -22,7 +22,7 @@ def last_seen(msg):
             leader = '{} is currently online and in the channel!'.format(msg.arg)
         else:
             leader = msg.arg
-        out = '{} last spoke in chat on {}'.format(leader, datetime.fromtimestamp(last_entry))
+        out = '{} last spoke in #tildetown on {}'.format(leader, datetime.fromtimestamp(last_entry))
     else:
         out = 'Sorry, {} was not found'.format(msg.arg)
     return pinhook.plugin.message(out)
