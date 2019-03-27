@@ -12,5 +12,5 @@ def get_time(msg):
 def uptime(msg):
     out = subprocess.check_output(['uptime']).decode().strip()
     if msg.cmd == '!load':
-        out = ' '.join(out.split(',')[2:]).strip()
+        out = ', '.join(out.split(',')[-3:]).strip()
     return pinhook.plugin.message(out)
