@@ -8,3 +8,4 @@
 "art.json" = '\b(art(ist(ic)?|s(y)?)?|music(a(in|l(s)?){1})?)\b'
 "tilde.json" = '\btilde(s)?\b'
 "dnd.json" = '\bd(ungeons)?( (&|and) |&|n)d(ragons)?\b'
+"mastodon.json" = '\b(masto(don)?|pleroma|pixelfed|activitypub|fed(eration|i(verse)?))\b'
