@@ -41,6 +41,8 @@ def get_pronouns(user):
             is_dot_user = True
         else:
             is_dot_user = False
+    else:
+        is_dot_user = False
     if is_dot_user:
         msg = 'Pronouns for {}: {}'.format(user, dot_pronouns[user])
     elif user in pronouns:
