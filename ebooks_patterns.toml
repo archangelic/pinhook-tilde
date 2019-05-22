@@ -1,5 +1,5 @@
 [patterns]
-"bitcoin.json" = '(cryptocurrenc(ies|y)|bitcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)'
+"bitcoin.json" = '(cryptocurrenc(ies|y)|b(i|ut)tcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)'
 "lisp.json" = '\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b'
 "naked.json" = 'n(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)'
 "python.json" = 'python(ic|ista)?'
@@ -9,3 +9,7 @@
 "tilde.json" = '\btilde(s)?\b'
 "dnd.json" = '\bd(ungeons)?( (&|and) |&|n)d(ragons)?\b'
 "mastodon.json" = '\b(masto(don)?|pleroma|pixelfed|activitypub|fed(eration|i(verse)?))\b'
+"cats.json" = '\b(cats?|kitt(en|ies|y))\b'
+"birds.json" = '\b(bir(b|d)(y|ie)?s?)\b'
+"butts.json" = '\b(b(utts?|oot(y|ies))|ass(es)?)\b'
+"pokemon.json" = '\bp+o+k(e|é)+m+(o|a)+n+s*\b'
