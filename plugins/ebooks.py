@@ -22,7 +22,7 @@ class POSifiedText(markovify.Text):
 ebooksdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ebooks')
 
 def get_subjects():
-    return sorted([os.path.splitext(i)[0] for i in os.listdir(ebooksdir) if i != 'evil.json'])
+    return sorted([os.path.splitext(i)[0] for i in os.listdir(ebooksdir)])
 
 def generate_message(ebook, tries=50):
     patterns = toml.load('ebooks_patterns.toml')['patterns']
@@ -35,18 +35,9 @@ def generate_message(ebook, tries=50):
             return pinhook.plugin.message(sentence)
     return None
 
-with open(os.path.join(ebooksdir, 'evil.json')) as e:
-    evil = POSifiedText.from_json(json.load(e))
-
 @pinhook.plugin.register('!cyber')
 def cyber(msg):
     out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
-    return pinhook.plugin.message(out)
-
-@pinhook.plugin.register('!lordmarkov')
-def lordmarkov(msg):
-    out = 'If I Ever Become an Evil Overlord: '
-    out += evil.make_short_sentence(476)
     return pinhook.plugin.message(out)
 
 @pinhook.plugin.register('!talkabout')

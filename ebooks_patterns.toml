@@ -13,3 +13,6 @@
 "birds.json" = '\b(bir(b|d)(y|ie)?s?)\b'
 "butts.json" = '\b(b(utts?|oot(y|ies))|ass(es)?)\b'
 "pokemon.json" = '\bp+o+k(e|é)+m+(o|a)+n+s*\b'
+"dogs.json" = '\b(dog(g(o|y|ie))?s?|pup(p(y|ie|er))?s?)\b'
+"programming.json" = '\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn|python(ic|ista)?|rust(\-lang)?|c|c#|c\+\+|golang|java|javascript|html|css|assembly)\b'
+"hackers.json" = '\bhack(s|ers?|ed|ing)?\b'
