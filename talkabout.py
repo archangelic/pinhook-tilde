@@ -7,11 +7,16 @@ import markovify
 import nltk
 import toml
 
-bot_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer', 'sedbot']
+ignored_users = ['cosnok', 'pinhook', 'quote_bot', 'tracer', 'sedbot']
 regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?")
 
 with open('/home/archangelic/irc/log', 'rb') as i:
         lines = i.readlines()
+
+with open('/home/archangelic/pinhook/optout') as o:
+    for x in o.readlines():
+        if x:
+            ignored_users.append(x)
 
 class POSifiedText(markovify.NewlineText):
     def word_split(self, sentence):
@@ -41,7 +46,7 @@ def make_sentence(sentence):
 def check_line(pattern, sentence):
     s = sentence.split('\t')
     try:
-        if s[1] not in bot_users and not s[2].startswith('pinhook:'):
+        if s[1] not in ignored_users and not s[2].startswith('pinhook:'):
             results = pattern.search(sentence)
         if results:
             sentence = make_sentence(s[2])
