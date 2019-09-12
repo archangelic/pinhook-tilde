@@ -103,7 +103,9 @@ def water(msg):
         visitors.append({'timestamp': int(time.time()), 'user': 'pinhook'})
         with open(filename, 'w') as v:
             json.dump(visitors, v, indent=2)
-        return pinhook.plugin.action("waters {}'s plant".format(nick))
+        with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:
+            desc = json.load(plant_json)['description']
+        return pinhook.plugin.action("waters {}'s {}".format(nick, desc))
     except Exception as e:
         msg.logger.error(e)
         return pinhook.plugin.message("{}: could not find plant for {}".format(msg.nick, nick))
