@@ -38,7 +38,7 @@ def make_sentence(sentence):
     word_list = sentence.split()
     if word_list[0].endswith(':'):
         word_list.pop(0)
-    if word_list[0].startswith('!'):
+    if word_list[0].startswith(('!', ',')):
         word_list = []
     sentence = ''.join([i + ' ' for i in word_list if not i.startswith('http')]).strip()
     return sentence
