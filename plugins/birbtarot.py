@@ -20,6 +20,6 @@ orientation = [
     ""
 ]
 
-@p.register('!birbtarot')
+@p.register('!birbtarot', help_text='bird themed tarot cards')
 def birb(msg):
     return p.message(random.choice(cards) + random.choice(orientation))

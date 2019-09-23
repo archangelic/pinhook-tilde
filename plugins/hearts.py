@@ -27,11 +27,11 @@ def make_hearts_str():
     message = emoji.emojize(message.replace(' ', ''), use_aliases=True)
     return message
 
-@pinhook.plugin.register('!hearts')
+@pinhook.plugin.register('!hearts', help_text='share some love by printing heart emojis')
 def make_hearts(msg):
     return pinhook.plugin.message(make_hearts_str())
 
-@pinhook.plugin.register('!rainbowhearts')
+@pinhook.plugin.register('!rainbowhearts', help_text='!hearts but with more color')
 def make_rainbow_hearts(msg):
     return pinhook.plugin.message("!rainbow {}".format(make_hearts_str()))
 

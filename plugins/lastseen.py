@@ -3,8 +3,8 @@ import re
 
 import pinhook.plugin
 
-@pinhook.plugin.register('!seen')
-@pinhook.plugin.register('!lastseen')
+@pinhook.plugin.register('!seen', help_text="determine when user last spoke in main chat")
+@pinhook.plugin.register('!lastseen', help_text="alias of !seen")
 def last_seen(msg):
     pattern = re.compile(r'^(?P<stamp>\d+)\t{}\t'.format(msg.arg))
     entries = []

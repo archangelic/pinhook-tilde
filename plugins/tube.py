@@ -6,7 +6,7 @@ import pinhook.plugin as p
 
 @p.listener('tube')
 def tube(msg):
-    match = re.match(r'.*(https:\/\/hooktube.com/watch\?v=[a-zA-z0-9\-_]+).*', msg.text)
+    match = re.match(r'.*((https:\/\/)?((hook|you)tube.com/watch\?v=|youtu.be/)[a-zA-z0-9\-_]+).*', msg.text)
     if match:
         msg.logger.debug(match.group(1))
         cmd = shlex.split(r'youtube-dl -e "{}"'.format(match.group(1)))

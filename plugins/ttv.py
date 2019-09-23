@@ -2,7 +2,7 @@ import json
 
 import pinhook.plugin as p
 
-@p.register('!ttv')
+@p.register('!ttv', help_text='output tilde tv stuff')
 def ttv(msg):
     with open('/home/karlen/public_html/tv/videos.json') as tv:
         vids = json.load(tv)

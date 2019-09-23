@@ -170,8 +170,8 @@ def next_up(text):
 def alias_show(text):
     return modify_alias(text)
 
-@pinhook.plugin.register('!tv')
-@pinhook.plugin.register('!tvalias')
+@pinhook.plugin.register('!tv', 'get info on upcoming episodes of a tv show')
+@pinhook.plugin.register('!tvalias', 'set an alias for a tv show to use with !tv')
 def run(msg):
     if msg.cmd == '!tv':
         return pinhook.plugin.message(next_up(msg.arg))

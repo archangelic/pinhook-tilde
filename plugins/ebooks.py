@@ -35,12 +35,12 @@ def generate_message(ebook, tries=50):
             return pinhook.plugin.message(sentence)
     return None
 
-@pinhook.plugin.register('!cyber')
+@pinhook.plugin.register('!cyber', help_text='markov cyberpunk snippet')
 def cyber(msg):
     out = requests.get('http://cyber.archangelic.space/snippet').content.decode()
     return pinhook.plugin.message(out)
 
-@pinhook.plugin.register('!talkabout')
+@pinhook.plugin.register('!talkabout', help_text='talk about several topics using markov chains')
 def talkabout(msg):
     if msg.arg.lower() in get_subjects():
         return generate_message('{}.json'.format(msg.arg.lower()))

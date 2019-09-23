@@ -1,7 +1,7 @@
 import re
 import pinhook.plugin
 
-@pinhook.plugin.register('!temp')
+@pinhook.plugin.register('!temp', help_text='convert temperatures')
 def convert(msg):
     if re.match(r'^-?\d*\.?\d+\.?[c,f]$', msg.arg.lower()):
         if msg.arg.lower().endswith('f'):

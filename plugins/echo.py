@@ -1,6 +1,7 @@
 import pinhook.plugin
 
 @pinhook.plugin.register('!phecho')
+@pinhook.plugin.ops('!phecho')
 def echo(msg):
     if msg.nick in msg.ops:
         msg.privmsg('#arch-dev', msg.arg)

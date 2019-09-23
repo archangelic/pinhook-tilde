@@ -8,7 +8,7 @@ deg = '°'
 with open('key.txt') as k:
     api_key = k.read().strip()
 
-@p.register('!weather')
+@p.register('!weather', help_text='look up weather for a given area')
 def weather(msg):
     location = geolocator.geocode(msg.arg)
     msg.logger.info('{}, {}'.format(location.latitude, location.longitude))
@@ -18,7 +18,7 @@ def weather(msg):
     tempc = int((tempf - 32) * (5/9))
     return p.message('Weather for: {}\n{}{}f/{}{}c {}'.format(location.raw['display_name'], tempf, deg, tempc, deg, forecast.summary))
 
-@p.register('!whereis')
+@p.register('!whereis', help_text='debugging tool to find out where a given string is thought to be')
 def whereis(msg):
     location = geolocator.geocode(msg.arg)
     msg.logger.info(location.raw)

@@ -1,6 +1,6 @@
 import pinhook.plugin as p
 
-@p.register('!hotlines')
+@p.register('!hotlines', help_text='suicide hotlines')
 def hotlines(msg):
     output = [
         'National Suicide Prevention Lifeline (US): 1-800-273-8255',

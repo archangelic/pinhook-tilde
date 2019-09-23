@@ -20,13 +20,13 @@ def beats(b='swatch'):
     return beat
 
 
-@pinhook.plugin.register('!beat')
-@pinhook.plugin.register('!beats')
+@pinhook.plugin.register('!beat', help_text='alias of !beats')
+@pinhook.plugin.register('!beats', help_text='get swatch internet time')
 def swatch(msg):
     return pinhook.plugin.message('@%06.2f' % (beats()))
 
-@pinhook.plugin.register('!ttocks')
-@pinhook.plugin.register('!tocks')
+@pinhook.plugin.register('!ttocks', help_text='alias of !tocks')
+@pinhook.plugin.register('!tocks', help_text='UTC aligned swatch internet time')
 def tildetocks(msg):
     return pinhook.plugin.message('@%06.2f' % (beats('tilde')))
 
