@@ -1,5 +1,7 @@
 from datetime import datetime
 import re
+import shlex
+import subprocess
 
 import pinhook.plugin
 
@@ -26,3 +28,13 @@ def last_seen(msg):
     else:
         out = 'Sorry, {} was not found'.format(msg.arg)
     return pinhook.plugin.message(out)
+
+@pinhook.plugin.register('!mentions', 'get your mentions')
+def mentions(msg):
+    cmd = "/home/archangelic/bin/mensch -u {} -t 24 -z +0".format(msg.nick)
+    cmd = [bytes(i, 'utf-8') for i in shlex.split(cmd)]
+    menschns = subprocess.check_output(cmd).decode().replace("\t", ": ").split("\n")
+    for mention in menschns:
+        if mention:
+            msg.privmsg(msg.nick, mention)
+
