@@ -17,4 +17,4 @@
 "programming.json" = '\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn|python(ic|ista)?|rust(\-lang)?|c|c#|c\+\+|golang|java|javascript|html|css|assembly)\b'
 "hackers.json" = '\bhack(s|ers?|ed|ing)?\b'
 "covid.json" = '\b((co)?rona(virus)?|covid(19)?)\b'
-"cannabis.json" = '\b(weed|bong|joint|canna(bis)?|420|blaze(it)?|hemp)\b'
+"cannabis.json" = '\b(weed|bong|joint|canna(bis)?|420|blaze(it)?|hemp|indica|sativa)\b'
