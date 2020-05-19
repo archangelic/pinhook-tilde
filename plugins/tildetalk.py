@@ -52,8 +52,8 @@ def write_optout(optoutlist):
         for i in optoutlist:
             o.write(i+'\n')
 
-@pinhook.plugin.register('!talklike', help_text='talklike someone (yourself by default)')
-@pinhook.plugin.register('!fuse', help_text='combine two users and try to talk like them')
+@pinhook.plugin.command('!talklike', help_text='talklike someone (yourself by default)')
+@pinhook.plugin.command('!fuse', help_text='combine two users and try to talk like them')
 def run(msg):
     optout = check_optout()
     nick = msg.nick
@@ -81,8 +81,8 @@ def run(msg):
             msg = "{}: Please give only 2 users".format(nick)
     return pinhook.plugin.message(msg)
 
-@pinhook.plugin.register('!tloptin', help_text='opt into talklike if you opted out')
-@pinhook.plugin.register('!tloptout', help_text='opt out of talklike')
+@pinhook.plugin.command('!tloptin', help_text='opt into talklike if you opted out')
+@pinhook.plugin.command('!tloptout', help_text='opt out of talklike')
 def optinout(msg):
     optout = check_optout()
     if msg.cmd == '!tloptin':

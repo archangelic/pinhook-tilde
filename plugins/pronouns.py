@@ -53,8 +53,8 @@ def get_pronouns(user):
         msg = "{} has not declared any pronouns. Use `echo '<pronouns here>' > ~/.pronouns` to add your pronouns!".format(user)
     return pinhook.plugin.message(msg)
 
-@pinhook.plugin.register('!pronouns', help_text='list pronouns for a user (yourself by default)')
-@pinhook.plugin.register('!mypronouns', help_text='deprecated method to set pronouns')
+@pinhook.plugin.command('!pronouns', help_text='list pronouns for a user (yourself by default)')
+@pinhook.plugin.command('!mypronouns', help_text='deprecated method to set pronouns')
 def run(msg):
     if msg.cmd == '!pronouns':
         if not msg.arg:

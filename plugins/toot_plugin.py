@@ -10,7 +10,7 @@ WIDE_MAP[0x20] = 0x3000
 def widen(s):
         return s.translate(WIDE_MAP)
 
-@pinhook.plugin.register('!toot', help_text='send a toot')
+@pinhook.plugin.command('!toot', help_text='send a toot')
 def run(msg):
     if msg.arg:
         subprocess.call(['/usr/local/bin/toot', msg.arg])
@@ -19,9 +19,9 @@ def run(msg):
         out = 'Please enter a message to toot!'
     return pinhook.plugin.message(out)
 
-@pinhook.plugin.register('!vapourtoot', help_text='!vaportoot for non-americans')
-@pinhook.plugin.register('!vaportoot', help_text='send a toot with vaporwave formatting')
-@pinhook.plugin.register('!tootwave', help_text='alias of !vaportoot')
+@pinhook.plugin.command('!vapourtoot', help_text='!vaportoot for non-americans')
+@pinhook.plugin.command('!vaportoot', help_text='send a toot with vaporwave formatting')
+@pinhook.plugin.command('!tootwave', help_text='alias of !vaportoot')
 def tootwave(msg):
     if msg.arg:
         message = emoji.emojize(msg.arg, use_aliases=True)

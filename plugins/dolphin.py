@@ -1,6 +1,6 @@
 import pinhook.plugin as p
 
-@p.register('!dolphin', 'encodes text into "e"s')
+@p.command('!dolphin', 'encodes text into "e"s')
 def dolphin(msg):
     if msg.arg:
         eee = ''.join(format(ord(x), '08b') for x in msg.arg)

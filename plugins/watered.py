@@ -13,7 +13,7 @@ verbs = [
 ]
 
 
-@pinhook.plugin.register('!botany', help_text='look up a plant to see if it has been watered (yourself by default)')
+@pinhook.plugin.command('!botany', help_text='look up a plant to see if it has been watered (yourself by default)')
 def run(msg):
     who = msg.nick
     if msg.arg:
@@ -87,7 +87,7 @@ def run(msg):
             greeting, plant['description'], w_days, w_hours, visitor)
         return pinhook.plugin.message(msg)
 
-@pinhook.plugin.register('!water', help_text='water a plant (yours by default)')
+@pinhook.plugin.command('!water', help_text='water a plant (yours by default)')
 def water(msg):
     if msg.arg == msg.botnick:
         return pinhook.plugin.action(random.choice(verbs))

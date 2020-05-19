@@ -5,8 +5,8 @@ import subprocess
 
 import pinhook.plugin
 
-@pinhook.plugin.register('!seen', help_text="determine when user last spoke in main chat")
-@pinhook.plugin.register('!lastseen', help_text="alias of !seen")
+@pinhook.plugin.command('!seen', help_text="determine when user last spoke in main chat")
+@pinhook.plugin.command('!lastseen', help_text="alias of !seen")
 def last_seen(msg):
     pattern = re.compile(r'^(?P<stamp>\d+)\t{}\t'.format(msg.arg))
     entries = []
@@ -29,7 +29,7 @@ def last_seen(msg):
         out = 'Sorry, {} was not found'.format(msg.arg)
     return pinhook.plugin.message(out)
 
-@pinhook.plugin.register('!mentions', 'get your mentions')
+@pinhook.plugin.command('!mentions', 'get your mentions')
 def mentions(msg):
     cmd = "/home/archangelic/bin/mensch -u {} -t 24 -z +0".format(msg.nick)
     cmd = [bytes(i, 'utf-8') for i in shlex.split(cmd)]
