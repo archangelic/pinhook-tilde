@@ -18,3 +18,4 @@
 "hackers.json" = '\bhack(s|ers?|ed|ing)?\b'
 "covid.json" = '\b((co)?rona(virus)?|covid(19)?)\b'
 "cannabis.json" = '\b(weed|bong|canna(bis)?|420|blaze(it)?|hemp|indica|sativa)\b'
+"thicc.json" = '([\w-]*t+h+i+(cc|c+k|q|k\b|kk)[\w-]*)
