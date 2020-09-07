@@ -27,7 +27,7 @@ def get_subjects():
 def generate_message(ebook, tries=50):
     patterns = toml.load('ebooks_patterns.toml')['patterns']
     patterns = {k: re.compile(v, re.IGNORECASE) for k,v in patterns.items()}
-    with open(os.path.join(ebooksdir, ebook)) as e:
+    with open(os.path.join(ebooksdir, '{}.json'.format(ebook))) as e:
         model = POSifiedText.from_json(json.load(e))
     for x in range(tries):
         sentence = model.make_short_sentence(400)
@@ -43,6 +43,6 @@ def cyber(msg):
 @pinhook.plugin.command('!talkabout', help_text='talk about several topics using markov chains')
 def talkabout(msg):
     if msg.arg.lower() in get_subjects():
-        return generate_message('{}.json'.format(msg.arg.lower()))
+        return generate_message(msg.arg.lower())
     else:
         return pinhook.plugin.message('please select one of the following: {}'.format(', '.join(get_subjects())))

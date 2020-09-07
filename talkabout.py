@@ -66,7 +66,7 @@ if __name__=='__main__':
     patterns = get_patterns()
     for p in patterns:
         sentences = []
-        filename = p
+        filename = p + '.json'
         pattern = patterns[p]
         for line in lines:
             line = regex.sub(b'', line)
