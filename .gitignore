@@ -6,9 +6,9 @@ doctorow_ebooks.txt
 .indexme
 *.swp
 *.log
-key.txt
 config.ini
 config.json
 plugins/pronouns.json
 plugins/ebooks/
 optout
+secrets.toml

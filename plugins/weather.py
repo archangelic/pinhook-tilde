@@ -1,12 +1,15 @@
 import forecastio
 from geopy.geocoders import Nominatim
 import pinhook.plugin as p
+import requests
+import toml
 
 geolocator = Nominatim()
 deg = '°'
 
-with open('key.txt') as k:
-    api_key = k.read().strip()
+keys = toml.load('secrets.toml')
+weather_key = keys['darksky']['key']
+aqi_key = keys['airvisual']['key']
 
 @p.command('!weather', help_text='look up weather for a given area')
 def weather(msg):
@@ -23,3 +26,26 @@ def whereis(msg):
     location = geolocator.geocode(msg.arg)
     msg.logger.info(location.raw)
     return p.message('{}, {}'.format(location.latitude, location.longitude))
+
+@p.command('!aqi')
+def aqi(msg):
+    location = geolocator.geocode(msg.arg)
+    payload = {'key': aqi_key, 'lat': location.latitude, 'lon': location.longitude}
+    r = requests.get('http://api.airvisual.com/v2/nearest_city', params=payload).json()['data']
+    city = r['city']
+    state = r['state']
+    country = r['country']
+    quality = int(r['current']['pollution']['aqius'])
+    if quality <= 50:
+        concern = 'Good'
+    elif quality <= 100:
+        concern = 'Moderate'
+    elif quality <= 150:
+        concern = 'Unhealthy for Sensitive Groups'
+    elif quality <= 200:
+        concern = 'Unhealthy'
+    elif quality <= 300:
+        concern = 'Very Unhealthy'
+    elif quality >= 301:
+        concern = 'Hazardous'
+    return p.message('AQI for {}, {}, {} is {} - {}'.format(city, state, country, quality, concern))
