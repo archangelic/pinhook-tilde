@@ -91,6 +91,8 @@ def run(msg):
 def water(msg):
     if msg.arg == msg.botnick:
         return pinhook.plugin.action(random.choice(verbs))
+    elif msg.arg == "gamebot":
+        return None
     elif not msg.arg:
         nick = msg.nick
     else:
