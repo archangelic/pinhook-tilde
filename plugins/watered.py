@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import json
 import random
+from os import listdir
 import time
 
 import pinhook.plugin
@@ -12,6 +13,18 @@ verbs = [
     'smiles',
 ]
 
+class IgnoredUsers:
+    def __init__(self):
+        if 'nowater.txt' not in listdir():
+            open('nowater.txt', 'w').close()
+
+    @property
+    def users(self):
+        with open('nowater.txt', 'r') as w:
+            u = [i.strip() for i in w.readlines() if i.strip()]
+        return u
+
+ignored = IgnoredUsers()
 
 @pinhook.plugin.command('!botany', help_text='look up a plant to see if it has been watered (yourself by default)')
 def run(msg):
@@ -91,7 +104,7 @@ def run(msg):
 def water(msg):
     if msg.arg == msg.botnick:
         return pinhook.plugin.action(random.choice(verbs))
-    elif msg.arg == "gamebot":
+    elif msg.arg in ignored.users:
         return None
     elif not msg.arg:
         nick = msg.nick
