@@ -1,7 +1,7 @@
 [patterns]
 bitcoin = '(cryptocurrenc(ies|y)|b(i|ut)tcoin|ethereum|dogecoin|\bbtc\b|\beth\b|blockchain)'
 lisp = '\b(scheme|clojure(script)?|e?lisp[sy]?|racket|hy|guile|haskell|urn)\b'
-naked = 'n(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)'
+naked = '\bn(ud(es?|ity)|ake(d(ness)?|e|y)|sfw)'
 python = 'python(ic|ista)?'
 fuck = '(#?[\w-]*f+u+(cc|c+k|q|k\b|kk)[\w-]*)'
 bots = '\bbot(s|ally)?\b'
@@ -21,3 +21,4 @@ cannabis = '\b(weed|bong|canna(bis)?|420|blaze(it)?|hemp|indica|sativa)\b'
 thicc = '([\w-]*t+h+i+(cc|c+k|q|k\b|kk)[\w-]*)'
 pizza = '\bpizzas?\b'
 fire = '\bfir(es?|e?y)\b'
+poop = '\b(poo(p(s|y)?)?\b|pupe|shit(t(y|ier|iest|ing)|s)?|crap(p(y|ier|iest|ed|ing)|s)?)'
