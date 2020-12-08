@@ -1,27 +1,30 @@
-import time
+import math
 import json
+import time
 
 from pinhook import plugin as p
 
 with open('emojis.json', 'r', encoding='utf-8') as e:
     emojis = json.load(e)
 
+emojis = sorted(emojis.items(), key=lambda x: x[0])
+
 emoji_list = {}
 c = 0
-for k,v in emojis.items():
+for k,v in emojis:
     emoji_list[str(c)] = v
     c += 1
 
-def check_emoji(num):
-    num = int(num.lstrip('0'))
-    if num > len(emoji_list):
-        num = int(num)//10
-    return emoji_list[str(num)]
-
 @p.command('!emojitime')
 def emojitime(msg):
-    code = str(int(time.time() * 100))
-    h = check_emoji(code[:4])
-    m = check_emoji(code[4:8])
-    s = check_emoji(code[8:])
+    e_len = len(emoji_list)
+    now = int(time.time() * 100)
+    s = math.floor(now % e_len)
+    s = emoji_list[str(s)]
+
+    m = math.floor((now % e_len**2)/e_len)
+    m = emoji_list[str(m)]
+
+    h = math.floor((now % e_len**3)/e_len**2)
+    h = emoji_list[str(h)]
     return p.message(u':'.join([h,m,s]))
