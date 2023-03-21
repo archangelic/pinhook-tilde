@@ -33,6 +33,6 @@ toml==0.10.1
 tqdm==4.45.0
 tvdb-api==1.10
 Unidecode==1.1.1
-urllib3==1.25.9
+urllib3==1.26.5
 xerox==0.4.1
 zalgotext==0.2.0
