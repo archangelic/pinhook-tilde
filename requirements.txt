@@ -17,7 +17,7 @@ jaraco.functools==3.0.1
 jaraco.logging==3.0.0
 jaraco.stream==3.0.0
 jaraco.text==3.2.0
-joblib==0.14.1
+joblib==1.2.0
 markovify==0.7.2
 marshmallow==3.19.0
 more-itertools==8.2.0
