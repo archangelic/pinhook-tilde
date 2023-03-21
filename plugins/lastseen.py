@@ -8,8 +8,9 @@ import pinhook.plugin
 @pinhook.plugin.command('!seen', help_text="determine when user last spoke in main chat")
 @pinhook.plugin.command('!lastseen', help_text="alias of !seen")
 def last_seen(msg):
-    pattern = re.compile(r'^(?P<stamp>\d+)\t{}\t'.format(msg.arg))
+    pattern = re.compile(r'^(?P<stamp>\d+)\t{}\t(?P<message>.*)$'.format(msg.arg))
     entries = []
+    messages = {}
     with open('/home/archangelic/irc/log', 'rb') as f:
         lines = f.readlines()
     for line in lines:
@@ -17,6 +18,7 @@ def last_seen(msg):
         result = pattern.search(line)
         if result:
             entries.append(float(result.group('stamp')))
+            messages[str(float(result.group('stamp')))] = result.group('message')
     if entries:
         entries.sort()
         last_entry = entries[-1]
@@ -24,7 +26,7 @@ def last_seen(msg):
             leader = '{} is currently online and in the channel!'.format(msg.arg)
         else:
             leader = msg.arg
-        out = '{} last spoke in #tildetown on {}'.format(leader, datetime.fromtimestamp(last_entry))
+        out = '{} last spoke in #tildetown on {} and said "{}"'.format(leader, datetime.fromtimestamp(last_entry), messages[str(last_entry)])
     else:
         out = 'Sorry, {} was not found'.format(msg.arg)
     return pinhook.plugin.message(out)

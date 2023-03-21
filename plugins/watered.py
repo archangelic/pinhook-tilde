@@ -102,9 +102,9 @@ def run(msg):
 
 @pinhook.plugin.command('!water', help_text='water a plant (yours by default)')
 def water(msg):
-    if msg.arg == msg.botnick:
-        return pinhook.plugin.action(random.choice(verbs))
-    elif msg.arg in ignored.users:
+#    if msg.arg == msg.botnick:
+#        return pinhook.plugin.action(random.choice(verbs))
+    if msg.arg in ignored.users:
         return None
     elif not msg.arg:
         nick = msg.nick

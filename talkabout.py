@@ -13,7 +13,7 @@ regex = re.compile(b"\x01|\x1f|\x02|\x12|\x0f|\x16|\x03(?:\d{1,2}(?:,\d{1,2})?)?
 with open('/home/archangelic/irc/log', 'rb') as i:
         lines = i.readlines()
 
-with open('/home/archangelic/pinhook/optout') as o:
+with open('/home/pinhook/pinhook/optout') as o:
     for x in o.readlines():
         if x:
             ignored_users.append(x)

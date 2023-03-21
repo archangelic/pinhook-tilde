@@ -21,6 +21,7 @@ if __name__ == '__main__':
         'localhost',
         ops=['archangelic'],
         ns_pass=config['password'],
-        nickserv='nickserv'
+        nickserv='nickserv',
+        # log_level='debug'
     )
     bot.start()

@@ -12,3 +12,4 @@ plugins/pronouns.json
 plugins/ebooks/
 optout
 secrets.toml
+.venv/
