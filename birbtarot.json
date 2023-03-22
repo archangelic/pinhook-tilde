@@ -1,236 +1,314 @@
 {
   "0. The Hatchling": {
-    "description": ""
+    "up": "beginnings, freedom, innocence, originality, adventure, idealism, spontaneity",
+    "down": "reckless, careless, distracted, naive, foolish, gullible, stale, dull"
   },
   "Ace of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ace of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ace of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ace of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Big Birb of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Big Birb of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Big Birb of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Big Birb of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Birb of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Birb of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Birb of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Birb of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Eight of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Eight of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Eight of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Eight of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fighty Birb of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fighty Birb of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fighty Birb of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fighty Birb of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Five of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Five of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Five of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Five of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fledgling of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fledgling of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fledgling of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Fledgling of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Four of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Four of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Four of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Four of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "I. The Owl": {
-    "description": ""
+    "up": "willpower, desire, being resourceful, skill, ability, concentration, manifestation",
+    "down": "manipulation, cunning, trickery, wasted talent, illusion, deception"
   },
   "II. The Ibis": {
-    "description": ""
+    "up": "unconscious, intuition, mystery, spirituality, higher power, inner voice",
+    "down": "repressed intuition, hidden motives, superficiality, confusion, cognitive dissonance"
   },
   "III. The Mother Duck": {
-    "description": ""
+    "up": "fertility, nurturing, creativity, beauty, abundance, nature",
+    "down": "insecurity, overbearing, negligence, smothering, lack of growth, lack of progress"
   },
   "IV. The Penguin": {
-    "description": ""
+    "up": "stability, structure, protection, authority, control, practicality, focus, discipline",
+    "down": "tyrant, domineering, rigid, stubborn, lack of discipline, recklessness"
   },
   "IX. The Burrowing Owl": {
-    "description": ""
+    "up": "self-reflection, introspection, contemplation, withdrawal, solitude, search for self",
+    "down": "loneliness, isolation, recluse, being anti-social, rejection, returning to society"
   },
   "Nine of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Nine of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Nine of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Nine of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Seven of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Seven of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Seven of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Seven of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Six of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Six of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Six of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Six of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ten of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ten of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ten of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Ten of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Three of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Three of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Three of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Three of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Two of Baths": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Two of Bread": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Two of Feathers": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "Two of Twigs": {
-    "description": ""
+    "up": "",
+    "down": ""
   },
   "V. The Eagle": {
-    "description": ""
+    "up": "tradition, social groups, conventionality, conformity, education, knowledge, beliefs",
+    "down": "rebellion, unconventionality, non-conformity, new methods, ignorance"
   },
   "VI. The Love Birbs": {
-    "description": ""
+    "up": "love, unions, partnerships, relationships, choices, romance, balance, unity",
+    "down": "disharmony, imbalance, conflict, detachment, bad choices, indecision"
   },
   "VII. The Carrier Pigeon": {
-    "description": ""
+    "up": "success, ambition, determination, willpower, control, self-discipline, focus",
+    "down": "forceful, no direction, no control, powerless, aggression, obstacles"
   },
   "VIII. The Strong Birb": {
-    "description": ""
+    "up": "courage, bravery, confidence, compassion, self-confidence, inner power",
+    "down": "self-doubt, weakness, low confidence, inadequacy, cowardice, forcefulness"
   },
   "X. The Big Wheel": {
-    "description": ""
+    "up": "change, cycles, fate, decisive moments, luck, fortune, unexpected events",
+    "down": "bad luck, lack of control, clinging to control, unwelcome changes, delays"
   },
   "XI. Free Bread": {
-    "description": ""
+    "up": "justice, karma, consequence, accountability, law, truth, honesty, integrity, cause and effect",
+    "down": "injustice, retribution, dishonesty, corruption, dishonesty, unfairness, avoiding accountability"
   },
   "XII. The Birdcage": {
-    "description": ""
+    "up": "sacrifice, waiting, uncertainty, lack of direction, perspective, contemplation",
+    "down": "stalling, disinterest, stagnation, avoiding sacrifice, standstill, apathy"
   },
   "XIII. Molting": {
-    "description": ""
+    "up": "transformation, endings, change, transition, letting go, release",
+    "down": "fear of change, repeating negative patterns, resisting change, stagnancy, decay"
   },
   "XIV. Balancing": {
-    "description": ""
+    "up": "balance, peace, patience, moderation, calm, tranquillity, harmony, serenity",
+    "down": "imbalance, excess, extremes, discord, recklessness, hastiness"
   },
   "XV. The Scarecrow": {
-    "description": ""
+    "up": "oppression, addiction, obsession, dependency, excess, powerlessness, limitations",
+    "down": "independence, freedom, revelation, release, reclaiming power, reclaiming control"
   },
   "XVI. The Windy Storm": {
-    "description": ""
+    "up": "disaster, destruction, upheaval, trauma, sudden change, chaos",
+    "down": "averting disaster, delaying the inevitable, resisting change"
   },
   "XVII. The Star": {
-    "description": ""
+    "up": "hope, inspiration, positivity, faith, renewal, healing, rejuvenation",
+    "down": "hopelessness, despair, negativity, lack of faith, despondent"
   },
   "XVIII. The Moon": {
-    "description": ""
+    "up": "illusion, intuition, uncertainty, confusion, complexity, secrets, unconscious",
+    "down": "fear, deception, anxiety, misunderstanding, misinterpretation, clarity, understanding"
   },
-  "XwIX. The Sun": {
-    "description": ""
+  "XVIX. The Sun": {
+    "up": "happiness, success, optimism, vitality, joy, confidence, happiness, truth",
+    "down": "blocked happiness, excessive enthusiasm, pessimism, unrealistic expectations, conceitedness"
   },
   "XX. Judgey": {
-    "description": ""
+    "up": "self-evaluation, awakening, renewal, purpose, reflection, reckoning",
+    "down": "self-doubt, lack of self-awareness, failure to learn lessons, self-loathing"
   },
   "XXI. The Park": {
-    "description": ""
+    "up": "completion, achievement, fulfilment, sense of belonging, wholeness, harmony",
+    "down": "lack of closure, lack of achievement, feeling incomplete, emptiness"
   }
 }
