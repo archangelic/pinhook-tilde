@@ -1,4 +1,5 @@
 beautifulsoup4==4.6.3
+Brotli==1.0.9
 bs4==0.0.1
 certifi==2022.12.7
 chardet==3.0.4
@@ -21,9 +22,11 @@ joblib==1.2.0
 markovify==0.9.4
 marshmallow==3.19.0
 more-itertools==8.2.0
+mutagen==1.46.0
 nltk==3.8.1
 packaging==23.0
 pinhook==1.9.7
+pycryptodomex==3.17
 python-forecastio==1.4.0
 pytz==2019.3
 regex==2022.10.31
@@ -37,5 +40,7 @@ tqdm==4.45.0
 tvdb-api==3.1.0
 Unidecode==1.1.1
 urllib3==1.26.15
+websockets==10.4
 xerox==0.4.1
+yt-dlp==2023.3.4
 zalgotext==0.2.0

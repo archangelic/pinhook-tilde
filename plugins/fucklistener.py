@@ -2,7 +2,7 @@ import re
 
 import pinhook.plugin as p
 
-pattern = re.compile(r'(#?[\w-]*f+u+(cc|c+k|k|q)+[\w-]*)', re.IGNORECASE)
+pattern = re.compile(r'(#?[\w-]*[f𝑓]+u+(cc|c+k|k|q)+[\w-]*)', re.IGNORECASE)
 new_fucks = []
 
 def check_fuck(fuck, unique_fucks):

@@ -1,7 +1,7 @@
 import json
 import random
 
-#import pinhook.plugin as p
+import pinhook.plugin as p
 
 with open('birbtarot.json') as b:
     tarot = json.load(b)

@@ -24,7 +24,7 @@ def make_hearts_str():
     message = ''
     for i in range(0, 10):
         message += ' ' + random.choice(hearts)
-    message = emoji.emojize(message.replace(' ', ''), use_aliases=True)
+    message = emoji.emojize(message.replace(' ', ''), language='alias')
     return message
 
 @pinhook.plugin.command('!hearts', help_text='share some love by printing heart emojis')
