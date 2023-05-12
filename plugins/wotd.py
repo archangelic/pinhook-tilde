@@ -39,12 +39,11 @@ def pick_wotd():
 def wotd_listener(msg):
     wotd_info = get_wotd()
     word = wotd_info['word']
-    if msg.msg_type == 'message':
-        if word in msg.text and wotd_info['said'] == 0 and msg.chan == '#tildetown':
-            msg.privmsg(msg.chan, f'{msg.nick}: Congrats! You have said "{word}" which is today\'s Secret Word of the Day!')
-            word_info['said'] += 1
-            word_info['said_by'].append(msg.nick)
-            write_wotd(word_info)
+    if msg.msg_type == 'message' and word in msg.text and wotd_info['said'] == 0 and msg.channel == '#tildetown':
+        msg.privmsg(msg.channel, f'{msg.nick}: Congrats! You have said "{word}" which is today\'s Secret Word of the Day!')
+        word_info['said'] += 1
+        word_info['said_by'].append(msg.nick)
+        write_wotd(word_info)
 
 @p.command('!wotd')
 def wotd_command(msg):
