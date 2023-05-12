@@ -8,7 +8,14 @@ def get_wotd():
     today = datetime.now().strftime('%Y%m%d')
     with open('wotd.json') as wj:
         word_info = json.load(wj)
-    if word_info['day'] != today or not word_info:
+    if not word_info:
+        word_info = {
+                'day': today,
+                'word': pick_wotd(),
+                'said': 0
+                'said_by': [],
+                }
+    if word_info['day'] != today:
         word_info = {
                 'day': today,
                 'word': pick_wotd(),
