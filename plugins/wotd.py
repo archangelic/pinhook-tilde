@@ -16,7 +16,7 @@ def get_wotd():
         word_info = {
                 'day': today,
                 'word': pick_wotd(),
-                'said': 0
+                'said': 0,
                 'said_by': [],
                 }
         wite_wotd(word_info)
