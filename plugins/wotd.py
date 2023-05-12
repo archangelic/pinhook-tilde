@@ -19,7 +19,7 @@ def get_wotd():
                 'said': 0,
                 'said_by': [],
                 }
-        wite_wotd(word_info)
+        write_wotd(word_info)
     if word_info['day'] != today:
         word_info = {
                 'day': today,
