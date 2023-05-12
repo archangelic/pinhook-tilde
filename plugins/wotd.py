@@ -4,6 +4,10 @@ import random
 
 import pinhook.plugin as p
 
+def write_wotd(word_info):
+    with open('wotd.json', 'w') as wj:
+        json.dump(word_info, wj, sort_keys=True, indent=2)
+
 def get_wotd():
     today = datetime.now().strftime('%Y%m%d')
     with open('wotd.json') as wj:
@@ -15,6 +19,7 @@ def get_wotd():
                 'said': 0
                 'said_by': [],
                 }
+        wite_wotd(word_info)
     if word_info['day'] != today:
         word_info = {
                 'day': today,
@@ -22,8 +27,7 @@ def get_wotd():
                 'said': 0,
                 'said_by': []
                 }
-        with open('wotd.json', 'w') as wj:
-            json.dump(word_info, wj, sort_keys=True, indent=2)
+        write_wotd(word_info)
     return word_info
 
 def pick_wotd():
@@ -40,8 +44,7 @@ def wotd_listener(msg):
             msg.privmsg(msg.chan, f'{msg.nick}: Congrats! You have said "{word}" which is today\'s Secret Word of the Day!')
             word_info['said'] += 1
             word_info['said_by'].append(msg.nick)
-            with open('wotd.json', 'w') as wj:
-                json.dump(word_info, wj, sort_keys=True, indent=2)
+            write_wotd(word_info)
 
 @p.command('!wotd')
 def wotd_command(msg):
