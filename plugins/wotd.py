@@ -39,7 +39,8 @@ def pick_wotd():
 def wotd_listener(msg):
     wotd_info = get_wotd()
     word = wotd_info['word']
-    if msg.msg_type == 'message' and word in msg.text.split(' ') and msg.channel == '#tildetown':
+    user_said = [w.lower() for w in msg.text.split(' ')]
+    if msg.msg_type == 'message' and word in user_said and msg.channel == '#tildetown':
         if not wotd_info['said']:
             msg.privmsg(msg.channel, f'{msg.nick}: Congrats! You have said "{word}" which is today\'s Secret Word of the Day!')
         wotd_info['said'] += 1
