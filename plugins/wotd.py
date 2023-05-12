@@ -43,7 +43,7 @@ def wotd_listener(msg):
         msg.privmsg(msg.channel, f'{msg.nick}: Congrats! You have said "{word}" which is today\'s Secret Word of the Day!')
         wotd_info['said'] += 1
         wotd_info['said_by'].append(msg.nick)
-        write_wotd(word_info)
+        write_wotd(wotd_info)
 
 @p.command('!wotd')
 def wotd_command(msg):
