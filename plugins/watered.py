@@ -115,7 +115,7 @@ def water(msg):
         filename = '/home/{}/.botany/visitors.json'.format(nick)
         with open(filename) as v:
             visitors = json.load(v)
-        visitors.append({'timestamp': int(time.time()), 'user': '{} via pinhook'.format(msg.nick)})
+        visitors.append({'timestamp': int(time.time()), 'user': '{} (via pinhook)'.format(msg.nick)})
         with open(filename, 'w') as v:
             json.dump(visitors, v, indent=2)
         with open('/home/{}/.botany/{}_plant_data.json'.format(nick, nick)) as plant_json:

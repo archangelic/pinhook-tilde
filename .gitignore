@@ -13,3 +13,8 @@ plugins/ebooks/
 optout
 secrets.toml
 .venv/
+old_words.txt
+used_wotd.txt
+words.txt
+words.txt
+wotd.json

@@ -12,12 +12,12 @@
     "down": "lost opportunity, lack of planning and foresight"
   },
   "Ace of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "breakthroughs, new ideas, mental clarity, success",
+    "down": "inner clarity, re-thinking an idea, clouded judgement"
   },
   "Ace of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "inspiration, new opportunities, growth, potential",
+    "down": "an emerging idea, lack of direction, distractions, delays"
   },
   "Big Birb of Baths": {
     "up": "emotionally balanced, compassionate, diplomatic",
@@ -28,12 +28,12 @@
     "down": "financially inept, obsessed with wealth and status, stubborn"
   },
   "Big Birb of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "mental clarity, intellectual power, authority, truth",
+    "down": "quiet power, inner truth, misuse of power, manipulation"
   },
   "Big Birb of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "natural-born leader, vision, entrepreneur, honour",
+    "down": "impulsiveness, haste, ruthless, high expectations"
   },
   "Birb of Baths": {
     "up": "compassionate, caring, emotionally stable, intuitive, in flow",
@@ -44,12 +44,12 @@
     "down": "financial independence, self-care, work-home conflict"
   },
   "Birb of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "independent, unbiased judgement, clear boundaries, direct communication",
+    "down": "overly-emotional, easily influenced, bitchy, cold-hearted"
   },
   "Birb of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "courage, confidence, independence, social butterfly, determination",
+    "down": "self-respect, self-confidence, introverted, re-establish sense of self"
   },
   "Eight of Baths": {
     "up": "disappointment, abandonment, withdrawal, escapism",
@@ -60,12 +60,12 @@
     "down": "self-development, perfectionism, misdirected activity"
   },
   "Eight of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "negative thoughts, self-imposed restriction, imprisonment, victim mentality",
+    "down": "self-limiting beliefs, inner critic, releasing negative thoughts, open to new perspectives"
   },
   "Eight of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "movement, fast paced change, action, alignment, air travel",
+    "down": "delays, frustration, resisting change, internal alignment"
   },
   "Fighty Birb of Baths": {
     "up": "creativity, romance, charm, imagination, beauty",
@@ -76,12 +76,12 @@
     "down": "self-discipline, boredom, feeling ‘stuck’, perfectionism"
   },
   "Fighty Birb of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "ambitious, action-oriented, driven to succeed, fast-thinking",
+    "down": "restless, unfocused, impulsive, burn-out"
   },
   "Fighty Birb of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "energy, passion, inspired action, adventure, impulsiveness",
+    "down": "passion project, haste, scattered energy, delays, frustration"
   },
   "Five of Baths": {
     "up": "regret, failure, disappointment, pessimism",
@@ -92,12 +92,12 @@
     "down": "recovery from financial loss, spiritual poverty"
   },
   "Five of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "conflict, disagreements, competition, defeat, winning at all costs",
+    "down": "reconciliation, making amends, past resentment"
   },
   "Five of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "conflict, disagreements, competition, tension, diversity",
+    "down": "inner conflict, conflict avoidance, tension release"
   },
   "Fledgling of Baths": {
     "up": "creative opportunities, intuitive messages, curiosity, possibility",
@@ -108,12 +108,12 @@
     "down": "lack of progress, procrastination, learn from failure."
   },
   "Fledgling of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "new ideas, curiosity, thirst for knowledge, new ways of communicating",
+    "down": "self-expression, all talk and no action, haphazard action, haste"
   },
   "Fledgling of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "inspiration, ideas, discovery, limitless potential, free spirit",
+    "down": "newly-formed ideas, redirecting energy, self-limiting beliefs, a spiritual path"
   },
   "Four of Baths": {
     "up": "meditation, contemplation, apathy, reevaluation",
@@ -124,12 +124,12 @@
     "down": "over-spending, greed, self-protection"
   },
   "Four of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "rest, relaxation, meditation, contemplation, recuperation",
+    "down": "exhaustion, burn-out, deep contemplation, stagnation"
   },
   "Four of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "celebration, joy, harmony, relaxation, homecoming",
+    "down": "personal celebration, inner harmony, conflict with others, transition"
   },
   "I. The Owl": {
     "up": "willpower, desire, being resourceful, skill, ability, concentration, manifestation",
@@ -160,12 +160,12 @@
     "down": "self-worth, over-investment in work, hustling"
   },
   "Nine of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "anxiety, worry, fear, depression, nightmares",
+    "down": "inner turmoil, deep-seated fears, secrets, releasing worry"
   },
   "Nine of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "resilience, courage, persistence, test of faith, boundaries",
+    "down": "inner resources, struggle, overwhelm, defensive, paranoia"
   },
   "Seven of Baths": {
     "up": "opportunities, choices, wishful thinking, illusion",
@@ -176,12 +176,12 @@
     "down": "lack of long-term vision, limited success or reward"
   },
   "Seven of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "betrayal, deception, getting away with something, acting strategically",
+    "down": "imposter syndrome, self-deceit, keeping secrets"
   },
   "Seven of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "challenge, competition, protection, perseverance",
+    "down": "exhaustion, giving up, overwhelmed"
   },
   "Six of Baths": {
     "up": "revisiting the past, childhood memories, innocence, joy",
@@ -192,12 +192,12 @@
     "down": "self-care, unpaid debts, one-sided charity"
   },
   "Six of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "transition, change, rite of passage, releasing baggage.",
+    "down": "personal transition, resistance to change, unfinished business"
   },
   "Six of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "success, public recognition, progress, self-confidence",
+    "down": "private achievement, personal definition of success, fall from grace, egotism"
   },
   "Ten of Baths": {
     "up": "divine love, blissful relationships, harmony, alignment",
@@ -208,12 +208,12 @@
     "down": "the dark side of wealth, financial failure or loss"
   },
   "Ten of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "painful endings, deep wounds, betrayal, loss, crisis",
+    "down": "recovery, regeneration, resisting an inevitable end"
   },
   "Ten of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "burden, extra responsibility, hard work, completion",
+    "down": "doing it all, carrying the burden, delegation, release"
   },
   "Three of Baths": {
     "up": "celebration, friendship, creativity, collaborations",
@@ -224,12 +224,12 @@
     "down": "disharmony, misalignment, working alone"
   },
   "Three of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "heartbreak, emotional pain, sorrow, grief, hurt",
+    "down": "negative self-talk, releasing pain, optimism, forgiveness"
   },
   "Three of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "progress, expansion, foresight, overseas opportunities",
+    "down": "playing small, lack of foresight, unexpected delays"
   },
   "Two of Baths": {
     "up": "unified love, partnership, mutual attraction",
@@ -240,12 +240,12 @@
     "down": "over-committed, disorganisation, reprioritisation"
   },
   "Two of Feathers": {
-    "up": "",
-    "down": ""
+    "up": "difficult decisions, weighing up options, an impasse, avoidance",
+    "down": "indecision, confusion, information overload, stalemate"
   },
   "Two of Twigs": {
-    "up": "",
-    "down": ""
+    "up": "future planning, progress, decisions, discovery",
+    "down": "personal goals, inner alignment, fear of unknown, lack of planning"
   },
   "V. The Eagle": {
     "up": "tradition, social groups, conventionality, conformity, education, knowledge, beliefs",

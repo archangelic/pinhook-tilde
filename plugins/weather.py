@@ -4,14 +4,14 @@ import pinhook.plugin as p
 import requests
 import toml
 
-geolocator = Nominatim()
+geolocator = Nominatim(user_agent='pinhook')
 deg = '°'
 
 keys = toml.load('secrets.toml')
-weather_key = keys['darksky']['key']
+# weather_key = keys['darksky']['key']
 aqi_key = keys['airvisual']['key']
 
-@p.command('!weather', help_text='look up weather for a given area')
+# @p.command('!weather', help_text='look up weather for a given area')
 def weather(msg):
     location = geolocator.geocode(msg.arg)
     msg.logger.info('{}, {}'.format(location.latitude, location.longitude))
